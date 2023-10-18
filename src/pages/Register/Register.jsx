@@ -1,8 +1,18 @@
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 import SocialLogin from "../Login/SocialLogin";
 import "./register.css"
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
+
+
 const Register = () => {
-   const handleRegister = e =>{
+   const { user, createUser, profileUpdate } = useContext(AuthContext)
+   const [passwordError, setPasswordError] = useState("")
+   const [showPass, setShowPass] = useState(false)
+   const navigate = useNavigate()
+
+   const handleRegister = (e) =>{
       e.preventDefault()
       const form = e.target
       const name= form.name.value
@@ -10,6 +20,50 @@ const Register = () => {
       const email = form.email.value
       const password = form.password.value
       console.log(name, photo, email, password)
+
+      const lengthError = /^.{6,}$/;
+      const spError = /[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]/;
+      const capitalError = /^[^A-Z]*$/;
+
+      if (!lengthError.test(password)) {
+         setPasswordError("Password is less than 6 characters.");
+         return;
+      } else if (capitalError.test(password)) {
+         setPasswordError("Password has no Capital Letter.");
+         return;
+      } else if (!spError.test(password)) {
+         setPasswordError("Password has no special characters.");
+         return;
+      }
+
+      createUser(email, password)
+         .then(result => {
+            if (result.user) {
+               alert('Account Create Successfully')
+               navigate("/")
+            }
+            if (!user) {
+               profileUpdate(name, photo)
+                  .then(() => {
+                     navigate("/");
+                  })
+                  .catch(error => {
+                     alert(error.message);
+                  })
+            } else {
+               alert('Account created successfully');
+               navigate("/");
+            }
+         })
+         .catch(error => {
+            if (error.message) {
+               alert("Email Already in Use.")
+            }
+
+         })
+   }
+   const handleShowPass = () => {
+      setShowPass(!showPass)
    }
    return (
       <div>
@@ -34,13 +88,20 @@ const Register = () => {
                   </div>
                   <div className="inputbox">
                      <ion-icon name="lock-closed-outline"></ion-icon>
-                     <input type="password" name="password" required />
+                     <input type={showPass ? "text" : "password"} name="password" id="password" required />
                      <label htmlFor="">Password</label>
+                     <p onClick={handleShowPass} htmlFor="password" className="absolute -top-2 right-2 p-2 hover:bg-gray-100 rounded-full">
+                        {
+                           showPass ? <BsEyeSlash className="text-xl text-gray-600"></BsEyeSlash> : <BsEye className="text-xl text-gray-600"></BsEye>
+                        }
+                     </p>
                   </div>
                   <div className="error">
-                     <p>FireBase Error</p>
+                     {
+                        passwordError && (<p className="text-red-500 text-sm mb-3">{passwordError}</p>)
+                     }
                   </div>
-                  <button>Sign Up</button>
+                  <button className="button">Sign Up</button>
                </form>
                <div>
                   <div className="flex text-white justify-center items-center pt-2">
