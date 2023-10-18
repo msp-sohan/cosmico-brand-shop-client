@@ -1,11 +1,13 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import "./login.css"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 const Login = () => {
    const { signInUser } = useContext(AuthContext)
+   const [showPass, setShowPass] = useState(false)
    const navigate = useNavigate()
    const location = useLocation()
 
@@ -28,6 +30,9 @@ const Login = () => {
             }
          })
    }
+   const handleShowPass = () => {
+      setShowPass(!showPass)
+   }
    return (
       <div>
          <div className="body">
@@ -41,8 +46,13 @@ const Login = () => {
                   </div>
                   <div className="inputbox">
                      <ion-icon name="lock-closed-outline"></ion-icon>
-                     <input type="password" name="password" required/>
-                        <label htmlFor="">Password</label>
+                     <input type={showPass ? "text" : "password"} name="password" id="password" required />
+                     <label htmlFor="">Password</label>
+                     <p onClick={handleShowPass} htmlFor="password" className="absolute -top-2 right-2 p-2 hover:bg-gray-100 rounded-full">
+                        {
+                           showPass ? <BsEyeSlash className="text-xl text-gray-600"></BsEyeSlash> : <BsEye className="text-xl text-gray-600"></BsEye>
+                        }
+                     </p>
                   </div>
                   <div className="forget">
                      <label htmlFor=""><input type="checkbox"/>Remember Me</label>
