@@ -33,17 +33,17 @@ const Navber = () => {
       <NavLink onClick={() => { setMenu(false) }} to="/addproduct" className={({ isActive, isPending }) =>
          isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#FFE17B]  text-[#FFE17B] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-red-500  text-white text-xl  mx-3 rounded-none"}>Add Product
       </NavLink>
-      <NavLink onClick={() => { setMenu(false) }} to="/about" className={({ isActive, isPending }) =>
+      {/* <NavLink onClick={() => { setMenu(false) }} to="/about" className={({ isActive, isPending }) =>
          isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#FFE17B]  text-[#FFE17B] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-red-500  text-white text-xl  mx-3 rounded-none "}>About Us
       </NavLink>
       <NavLink onClick={() => { setMenu(false) }} to="/contact" className={({ isActive, isPending }) =>
          isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#FFE17B]  text-[#FFE17B] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-red-500  text-white text-xl  mx-3 rounded-none "}>Contact Us
-      </NavLink>
+      </NavLink> */}
       {/* <NavLink to="/login" className={({ isActive, isPending }) =>
          isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-red-500  text-red-500 text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-red-500  text-white text-xl  mx-3 rounded-none "}>Login
       </NavLink> */}
-      <NavLink onClick={() => { setMenu(false) }} to="/register" className={({ isActive, isPending }) =>
-         isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#FFE17B]  text-[#FFE17B] text-xl mx-3  rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-red-500  text-white text-xl mx-3 rounded-none "}>Sign Up
+      <NavLink onClick={() => { setMenu(false) }} to="/mycart" className={({ isActive, isPending }) =>
+         isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#FFE17B]  text-[#FFE17B] text-xl mx-3  rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-red-500  text-white text-xl mx-3 rounded-none "}>My Cart
       </NavLink>
 
    </>

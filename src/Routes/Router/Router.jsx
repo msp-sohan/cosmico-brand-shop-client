@@ -7,6 +7,7 @@ import Register from "../../pages/Register/Register";
 import AddProduct from "../../pages/AddProduct/AddProduct";
 import BrandProduct from "../../pages/BrandProduct/BrandProduct";
 import PrivetRouter from "../PrivetRouter/PrivetRouter";
+import MyCart from "../../pages/MyCart/MyCart";
 
 const router = createBrowserRouter([
    {
@@ -32,7 +33,13 @@ const router = createBrowserRouter([
          },
          {
             path: "/products/:brand",
-            element: <BrandProduct></BrandProduct>
+            element: <BrandProduct></BrandProduct>,
+            loader: () => fetch(`http://localhost:5000/products`)
+
+         },
+         {
+            path: "/mycart",
+            element: <PrivetRouter><MyCart></MyCart></PrivetRouter>
          }
       ]
    }

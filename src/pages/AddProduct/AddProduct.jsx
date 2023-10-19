@@ -5,7 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const AddProduct = () => {
    const { user } = useContext(AuthContext)
-   console.log(user.email)
+   const userEmail = user.email;
 
    const handleAddProduct = e => {
       e.preventDefault()
@@ -17,8 +17,12 @@ const AddProduct = () => {
       const description = form.description.value;
       const image = form.image.value;
       const rating = form.rating.value;
-      const products = { name, brand, type, price, description, rating, image }
+      const products = { name, brand, type, price, description, rating, image, userEmail }
       console.log(products)
+      if (rating > 5) {
+         alert('Rating Must be Equal or less than 5')
+         return
+      }
 
       fetch('http://localhost:5000/products', {
          method: "POST",
@@ -63,7 +67,6 @@ const AddProduct = () => {
                            {/* <input className="w-full pl-3 h-full" type="text" name="brand" placeholder="Enter Brand Name" id="" /> */}
                            <select className="w-full" id="brand" name="brand">
                               <option value="">Select One</option>
-                              // eslint-disable-next-line react/no-unescaped-entities
                               <option value="L'Oreal">L{signle}Oreal</option>
                               <option value="Chanel">Chanel</option>
                               <option value="Urban Decay">Urban Decay</option>
@@ -81,8 +84,8 @@ const AddProduct = () => {
                            {/* <input className="w-full pl-3 h-full" type="text" name="type" placeholder="Enter Product type" id="" /> */}
                            <select className="w-full" id="type" name="type">
                               <option value="">Select One</option>
-                              <option value="skincare">SKIN CARE</option>
-                              <option value="eyepalettes">EYE PALETTES</option>
+                              <option value="skin-care">SKIN CARE</option>
+                              <option value="eye-palettes">EYE PALETTES</option>
                               <option value="fragrance">FRAGRANCE</option>
                            </select>
                         </div>
