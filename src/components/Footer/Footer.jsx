@@ -10,18 +10,18 @@ const Footer = () => {
    return (
       <div>
          <div className="container mx-auto py-12 lg:py-5 bg-transparent">
-            <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-4 py-6 px-2 text-yellow-700 bg-gray-200 bg-opacity-30">
-               <Link to="/" className="hover:border-b-2 hover:pb-[1px] pb-[3px]">About US</Link>
+            <div className="flex text-xl flex-wrap justify-center items-center gap-6 lg:gap-4 py-6 px-2 text-yellow-700 bg-gray-200 bg-opacity-30">
+               <Link to="/" className="hover:border-b-2 hover:border-yellow-700 hover:pb-[1px] pb-[3px]">About US</Link>
                {/* <BsDot className="sm:hidden md:hidden"/> */}
-               <Link to="/" className="hover:border-b-2 hover:pb-[1px] pb-[3px]">Our Team</Link>
+               <Link to="/" className="hover:border-b-2 hover:border-yellow-700 hover:pb-[1px] pb-[3px]">Our Team</Link>
                {/* <BsDot className="sm:hidden md:hidden"/> */}
-               <Link to="/" className="hover:border-b-2 hover:pb-[1px] pb-[3px]">Faq</Link>
+               <Link to="/" className="hover:border-b-2 hover:border-yellow-700 hover:pb-[1px] pb-[3px]">Faq</Link>
                {/* <BsDot className="sm:hidden md:hidden"/> */}
-               <Link to="/" className="hover:border-b-2 hover:pb-[1px] pb-[3px] hidden">Maintanance Mode</Link>
+               <Link to="/" className="hover:border-b-2 hover:border-yellow-700 hover:pb-[1px] pb-[3px] hidden">Maintanance Mode</Link>
                {/* <BsDot className="sm:hidden md:hidden"/> */}
-               <Link to="/" className="hover:border-b-2 hover:pb-[1px] pb-[3px]">Contact</Link>
+               <Link to="/" className="hover:border-b-2 hover:border-yellow-700 hover:pb-[1px] pb-[3px]">Contact</Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:flex justify-between items-center px-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:flex justify-between items-center px-5 text-lg">
                <div className="order-2 lg:order-1 py-12 lg:py-0">
                   <p className="flex items-center gap-6"><BsTelephoneForward /><span>+123 488 9652</span></p>
                   <p className="flex items-center gap-6"><IoLocationOutline /><span>25 West 21th Street, Miami FL, USA</span></p>
