@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BsDot, BsTelephoneForward, BsClock } from 'react-icons/bs';
+import { BsTelephoneForward, BsClock } from 'react-icons/bs';
 import { IoLocationOutline } from 'react-icons/io5';
 import { GrMailOption } from 'react-icons/gr';
 import SocialIcon from "../SocialIcon/SocialIcon";

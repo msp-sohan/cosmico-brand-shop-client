@@ -5,6 +5,8 @@ import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
 import AddProduct from "../../pages/AddProduct/AddProduct";
+import BrandProduct from "../../pages/BrandProduct/BrandProduct";
+import PrivetRouter from "../PrivetRouter/PrivetRouter";
 
 const router = createBrowserRouter([
    {
@@ -26,7 +28,11 @@ const router = createBrowserRouter([
          },
          {
             path: "/addproduct",
-            element: <AddProduct></AddProduct>
+            element: <PrivetRouter><AddProduct></AddProduct></PrivetRouter>
+         },
+         {
+            path: "/products/:brand",
+            element: <BrandProduct></BrandProduct>
          }
       ]
    }
