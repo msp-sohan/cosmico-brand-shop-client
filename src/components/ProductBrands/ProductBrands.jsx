@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const ProductBrands = () => {
    const [brandName, setBrandName] = useState([])
    const [allProduct, setAllProduct] = useState([])
-   const {user} = useContext(AuthContext)
+   const { user } = useContext(AuthContext)
+   console.log('Product Brand', user);
    const navigate = useNavigate()
 
 
@@ -17,22 +18,22 @@ const ProductBrands = () => {
 
    useEffect(() => {
       fetch('http://localhost:5000/products')
-      .then(res=>res.json())
-      .then(data=>setAllProduct(data))
+         .then(res => res.json())
+         .then(data => setAllProduct(data))
    }, [])
-   
-   const signleProduct = allProduct.map(product=>{
+
+   const signleProduct = allProduct.map(product => {
       return product
    })
    console.log(signleProduct, 'single')
 
-   const handleShowProduct = (brand) =>{
+   const handleShowProduct = (brand) => {
       navigate(`/${brand}`)
    }
 
    return (
       <div className="bg-white py-12 container mx-auto px-3 xl:px-0">
-         <h2 className="text-3xl font-semibold text-center mb-10">Brand Products {brandName.length}</h2>
+         <h2 className="text-3xl font-semibold text-center mb-10">Brand Products</h2>
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {
                brandName.map(brand =>

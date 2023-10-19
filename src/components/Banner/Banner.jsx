@@ -4,13 +4,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import "./banner.css";
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 const Banner = () => {
    const progressCircle = useRef(null);
@@ -25,7 +25,7 @@ const Banner = () => {
             spaceBetween={30}
             centeredSlides={true}
             autoplay={{
-               delay: 114000000,
+               delay: 3000,
                disableOnInteraction: false
             }}
             pagination={{

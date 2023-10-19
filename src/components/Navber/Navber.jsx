@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
+import { FaUserTie } from 'react-icons/fa';
+import { MdOutlineLogout } from 'react-icons/md';
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-import userPic from "../../assets/user.png"
-import { MdOutlineLogout } from 'react-icons/md';
-import { FaUserTie } from 'react-icons/fa';
+import userPic from "../../assets/user.png";
 
 
 const Navber = () => {
@@ -66,7 +66,7 @@ const Navber = () => {
                   }
                </div>
                <Link to="/" className="btn btn-ghost normal-case text-white text-xl ">
-                  <img className="w-10 " src="https://i.ibb.co/fpyQbQT/2.png" alt="" />
+                  <img className="w-10 " src="https://i.ibb.co/2N3fKwV/3.png" alt="" />
                   <h3>Cosmic</h3>
                </Link>
             </div>
@@ -77,7 +77,7 @@ const Navber = () => {
             </div>
             <div className="navbar-end">
                {
-                  user?.email ? <button  onClick={handleDropdown}><img className="w-10 h-10 right-0 btn-circle" src={user?.photoURL ? user.photoURL : userPic}></img></button> : <Link to='/login' className="hover:btn-ghost hover:text-[#f8c89d] hover:border-b-2 hover:border-b-[#FFD9B7] text-xl text-white font-semibold p-2 rounded-md ">Login</Link>
+                  user?.email ? <button onClick={handleDropdown}><img className="w-10 h-10 right-0 btn-circle" src={user?.photoURL ? user.photoURL : userPic}></img></button> : <Link to='/login' className="hover:btn-ghost hover:text-[#f8c89d] hover:border-b-2 hover:border-b-[#FFD9B7] text-xl text-white font-semibold p-2 rounded-md ">Login</Link>
                }
                {
                   user && <div className={`absolute bg-sky-200 p-2 rounded top-16 ${dropdown ? "" : "hidden"}`}>

@@ -1,0 +1,11 @@
+.slick-prev::before,
+.slick-next::before {
+   font-size: 1px;
+   opacity: 0;
+   color: purple;
+   cursor: pointer;
+}
+.slick-slide > div {
+   margin: 0 20px;
+   border-radius: 20px;
+}
