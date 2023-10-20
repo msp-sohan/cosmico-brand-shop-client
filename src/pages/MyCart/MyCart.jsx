@@ -47,7 +47,7 @@ const MyCart = () => {
             {
                myCart.map(product =>
                   <div key={product._id}>
-                     <div className="card bg-base-100 shadow-2xl drop-shadow-2xl">
+                     <div className="card bg-base-100 shadow-2xl drop-shadow-xl">
                         <figure>
                            <img src={product.image} alt="Product" className="h-72 w-full" />
                         </figure>
