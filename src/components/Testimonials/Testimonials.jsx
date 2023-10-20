@@ -30,7 +30,7 @@ const Testimonials = () => {
    }
 
    return (
-      <div className="bg-[#fbe7df] py-12">
+      <div className="bg-[#fbe7df] py-12 dark:bg-gray-900">
          <div className="container mx-auto px-3 xl:px-16 overflow-hidden">
             <div className="text-center">
                <h2 className="text-xl text-red-500 uppercase tracking-[10px]">Our customer</h2>

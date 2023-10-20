@@ -8,9 +8,9 @@ import SocialIcon from "../SocialIcon/SocialIcon";
 
 const Footer = () => {
    return (
-      <div>
-         <div className="container mx-auto py-12 lg:py-5 bg-transparent">
-            <div className="flex text-xl flex-wrap justify-center items-center gap-6 lg:gap-4 py-6 px-2 text-yellow-700 bg-gray-200 bg-opacity-30">
+      <div className='dark:bg-gray-900 dark:text-white'>
+         <div className="container mx-auto py-12 lg:py-5 bg-transparent dark:bg-gray-900">
+            <div className="flex text-xl flex-wrap justify-center items-center gap-6 lg:gap-4 py-6 px-2 dark:text-yellow-300 text-yellow-700 bg-gray-200 bg-opacity-30">
                <Link to="/" className="hover:border-b-2 hover:border-yellow-700 hover:pb-[1px] pb-[3px]">About US</Link>
                {/* <BsDot className="sm:hidden md:hidden"/> */}
                <Link to="/" className="hover:border-b-2 hover:border-yellow-700 hover:pb-[1px] pb-[3px]">Our Team</Link>
@@ -25,7 +25,7 @@ const Footer = () => {
                <div className="order-2 lg:order-1 py-12 lg:py-0">
                   <p className="flex items-center gap-6"><BsTelephoneForward /><span>+123 456 7890</span></p>
                   <p className="flex items-center gap-6"><IoLocationOutline /><span>Level-4, 34, Awal Centre, Banani, Dhaka</span></p>
-                  <p className="flex items-center gap-6"><GrMailOption /><span>info@cosmico.com</span></p>
+                  <p className="flex items-center gap-6"><GrMailOption className='' /><span>info@cosmico.com</span></p>
                   <p className="flex items-center gap-6"><BsClock /><span>Mon-Fri: 10:00 - 18:00</span></p>
                </div>
                <div className="order-3 md:order-1 lg:order-2">

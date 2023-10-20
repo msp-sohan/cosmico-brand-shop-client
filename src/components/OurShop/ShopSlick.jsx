@@ -6,11 +6,11 @@ const ShopSlick = ({ shopData }) => {
    const { name, brand, type, price, description, rating, image } = shopData;
    return (
       <div>
-         <div className="bg-gray-50 drop-shadow-2xl hover:shadow-2xl hover:shadow-pink-400">
+         <div className="bg-gray-50 drop-shadow-2xl hover:shadow-2xl dark:bg-gray-900    hover:shadow-pink-400">
             <figure className="">
                <img src={image} alt="Product" className="h-72 w-full border rounded-md" />
             </figure>
-            <div className="card-body px-3 drop-shadow-2xl">
+            <div className="card-body px-3 drop-shadow-2xl border-b-4 border-pink-300 dark:border-r-2 dark:border-b-4  dark:border-l-2 dark:border-pink-500">
                <div className="h-14">
                   <h2 className="card-title">{name}</h2>
                </div>

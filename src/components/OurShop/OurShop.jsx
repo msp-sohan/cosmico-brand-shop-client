@@ -50,7 +50,7 @@ const OurShop = () => {
    };
 
    return (
-      <div className="overflow-hidden bg-pink-50 py-12">
+      <div className="overflow-hidden bg-pink-50 py-12 dark:bg-gray-900 dark:text-white">
          <h4 className="text-xl text-center tracking-[15px] uppercase">Our Shop</h4>
          <h2 className="text-5xl uppercase tracking-[10px] mt-6 mb-12 text-center">Product</h2>
          <div>
