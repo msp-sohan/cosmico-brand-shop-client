@@ -2,7 +2,7 @@
 
 const ExtraSection = () => {
    return (
-      <div className="px-3 container mx-auto my-12">
+      <div className="px-3 container mx-auto my-20">
          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {/* 1 */}
             <div className="relative col-span-3">

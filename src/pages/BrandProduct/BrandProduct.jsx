@@ -1,5 +1,5 @@
 import Rating from "react-rating";
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import Advertisement from "../../components/Advertisement/Advertisement";
 
 
@@ -10,8 +10,17 @@ const BrandProduct = () => {
    const brandMatch = allProduct.filter(products => products.brand === brand)
    // const { name, type, price, description, rating, image } = brandMatch;
 
+   if (brandMatch.length === 0) {
+      return (
+         <div className="my-[30vh]">
+            <h2 className="text-3xl text-center mt-4">
+               Sorry, no products found for <span className="text-pink-400">{brand}.</span>
+            </h2>
+         </div>
+      );
+   }
    return (
-      <div>
+      <div className="">
          <div className="relative flex justify-center items-center">
             <img className="h-80 w-full" src="https://i.ibb.co/RB1zrhK/cosmico-footer-bg.webp" alt="" />
             <div className="w-full h-full absolute bg-green-500 bg-opacity-30"></div>
@@ -46,8 +55,10 @@ const BrandProduct = () => {
                               </p>
                            </div>
                            <div className="flex justify-center  gap-8">
-                              <button className="badge text-xl py-4 hover:bg-purple-500 hover:text-white w-full badge-outline">Details</button>
-                              <button className="badge text-xl py-4 hover:bg-pink-500 hover:text-white w-full badge-outline">Update</button>
+                              <Link to={`/products/${brand}/${brandProduct._id}`} className="w-full badge text-xl py-4 hover:bg-purple-500 hover:text-white badge-outline">
+                                 <button className="">Details</button>
+                              </Link>
+                              <Link to={`/update/${brandProduct._id}`} className="badge text-xl py-4 hover:bg-pink-500 hover:text-white w-full badge-outline"><button className="">Update</button></Link>
                            </div>
                         </div>
                      </div>

@@ -3,6 +3,7 @@ import ExtraSection from "../../components/ExtraSection/ExtraSection";
 import HotDeal from "../../components/HotDeal/HotDeal";
 import OurShop from "../../components/OurShop/OurShop";
 import ProductBrands from "../../components/ProductBrands/ProductBrands";
+import Testimonials from "../../components/Testimonials/Testimonials";
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
             <ProductBrands></ProductBrands>
             <OurShop></OurShop>
             <ExtraSection></ExtraSection>
+            <Testimonials></Testimonials>
          </div>
       </div>
    );
