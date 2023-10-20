@@ -9,7 +9,6 @@ const MyCart = () => {
    const [myCart, setMyCart] = useState(product)
 
    const handleDelete = (id) => {
-      console.log(id);
 
       Swal.fire({
          title: 'Are you sure?',
