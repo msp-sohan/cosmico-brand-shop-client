@@ -1,20 +1,26 @@
+import { useContext } from "react";
 import Rating from "react-rating";
 import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const ProductDetails = () => {
+   const { user } = useContext(AuthContext)
+   const email = user?.email
    const products = useLoaderData()
    const { id } = useParams()
 
    const single = products.find(product => product._id === id)
 
    const handleAddCart = (cart) => {
-      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/mycart', {
+      const { brand, description, name, price, rating, type, image } = cart;
+      const data = { brand, description, name, price, rating, type, image, email }
+      fetch('https://b8a10-brandshop-server-side-mspsohan.vercel.app/mycart', {
          method: "POST",
          headers: {
             'Content-type': 'application/json'
          },
-         body: JSON.stringify(cart)
+         body: JSON.stringify(data)
       })
          .then(res => res.json())
          .then(data => {

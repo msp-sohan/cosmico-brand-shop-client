@@ -1,33 +1,32 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
 
 const ProductBrands = () => {
    const [brandName, setBrandName] = useState([])
 
-   const [allProduct, setAllProduct] = useState([])
+   // const [allProduct, setAllProduct] = useState([])
 
-   const { user } = useContext(AuthContext)
-   console.log('Product Brand', user);
+   // const { user } = useContext(AuthContext)
+   // console.log('Product Brand', user);
    // const navigate = useNavigate()
 
 
    useEffect(() => {
-      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/products/brands')
+      fetch('https://b8a10-brandshop-server-side-mspsohan.vercel.app/products/brands')
          .then(res => res.json())
          .then(data => setBrandName(data))
    }, [])
 
-   useEffect(() => {
-      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app')
-         .then(res => res.json())
-         .then(data => setAllProduct(data))
-   }, [])
+   // useEffect(() => {
+   //    fetch('https://b8a10-brandshop-server-side-mspsohan.vercel.app/products')
+   //       .then(res => res.json())
+   //       .then(data => setAllProduct(data))
+   // }, [])
 
-   const signleProduct = allProduct.map(product => {
-      return product
-   })
-   console.log(signleProduct, 'single')
+   // const signleProduct = allProduct.map(product => {
+   //    return product
+   // })
+   // console.log(signleProduct, 'single')
 
    // const handleShowProduct = (brand) => {
    //    navigate(`/${brand}`)

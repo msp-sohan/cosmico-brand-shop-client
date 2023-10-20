@@ -3,7 +3,6 @@ import Swal from "sweetalert2";
 
 const UpdateProduct = () => {
    const singleProduct = useLoaderData()
-   console.log(singleProduct);
 
    const handleUpdateProduct = e => {
       e.preventDefault()
@@ -21,7 +20,7 @@ const UpdateProduct = () => {
          return
       }
 
-      fetch(`https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/${singleProduct._id}`, {
+      fetch(`https://b8a10-brandshop-server-side-mspsohan.vercel.app/${singleProduct._id}`, {
          method: "PUT",
          headers: {
             'Content-type': 'application/json'

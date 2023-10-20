@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const SocialLogin = () => {
    const { googleLogin } = useContext(AuthContext)
@@ -12,11 +13,11 @@ const SocialLogin = () => {
          .then(result => {
             if (result.user) {
                navigate(location?.state ? location.state : "/")
-               alert('Successfully Login With Google')
+               Swal.fire('Successfully Login With Google')
             }
          })
          .catch(error => {
-            alert(error.message)
+            Swal.fire(error.message)
          })
    }
    return (

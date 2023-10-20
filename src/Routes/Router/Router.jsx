@@ -36,22 +36,22 @@ const router = createBrowserRouter([
          {
             path: "/products/:brand",
             element: <BrandProduct></BrandProduct>,
-            loader: () => fetch(`https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/products`)
+            loader: () => fetch(`https://b8a10-brandshop-server-side-mspsohan.vercel.app/products`)
          },
          {
             path: "/products/:brand/:id",
             element: <PrivetRouter><ProductDetails></ProductDetails></PrivetRouter>,
-            loader: () => fetch(`https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app`)
+            loader: () => fetch(`https://b8a10-brandshop-server-side-mspsohan.vercel.app/products`)
          },
          {
             path: "/update/:id",
             element: <PrivetRouter><UpdateProduct></UpdateProduct></PrivetRouter>,
-            loader: ({ params }) => fetch(`https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/${params.id}`)
+            loader: ({ params }) => fetch(`https://b8a10-brandshop-server-side-mspsohan.vercel.app/products/${params.id}`)
          },
          {
             path: "/mycart",
             element: <PrivetRouter><MyCart></MyCart></PrivetRouter>,
-            loader: () => fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/mycart')
+            loader: () => fetch('https://b8a10-brandshop-server-side-mspsohan.vercel.app/mycart')
          }
       ]
    }

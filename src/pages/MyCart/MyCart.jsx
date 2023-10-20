@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Rating from "react-rating";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const MyCart = () => {
+   const { user } = useContext(AuthContext)
    const product = useLoaderData()
-
    const [myCart, setMyCart] = useState(product)
 
-   const handleDelete = (id) => {
+   const userCart = myCart.filter(cart => cart.email == user.email)
 
+   const handleDelete = (id) => {
+      console.log(id);
       Swal.fire({
          title: 'Are you sure?',
          text: "You won't be able to revert this!",
@@ -20,7 +23,7 @@ const MyCart = () => {
          confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
          if (result.isConfirmed) {
-            fetch(`https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/mycart/${id}`, {
+            fetch(`https://b8a10-brandshop-server-side-mspsohan.vercel.app/mycart/${id}`, {
                method: "DELETE",
             })
                .then(res => res.json())
@@ -40,12 +43,21 @@ const MyCart = () => {
       })
    }
 
+   if (userCart.length === 0) {
+      return (
+         <div className="my-[30vh]">
+            <h2 className="text-3xl text-center mt-4">
+               Sorry, You Dont added any Product to Cart.
+            </h2>
+         </div>
+      );
+   }
 
    return (
       <div>
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto gap-6 my-12">
             {
-               myCart.map(product =>
+               userCart.map(product =>
                   <div key={product._id}>
                      <div className="card bg-base-100 shadow-2xl drop-shadow-xl">
                         <figure>

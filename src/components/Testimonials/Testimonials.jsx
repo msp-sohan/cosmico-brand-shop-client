@@ -12,7 +12,7 @@ import "./testimonial.css";
 const Testimonials = () => {
    const [testimonials, setTestimonial] = useState([])
    useEffect(() => {
-      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/testimonial')
+      fetch('https://b8a10-brandshop-server-side-mspsohan.vercel.app/testimonial')
          .then(res => res.json())
          .then(data => setTestimonial(data))
    }, [])
@@ -50,7 +50,7 @@ const Testimonials = () => {
                   modules={[FreeMode, Pagination]}
                   className="mySwiper">
                   {
-                     testimonials.map(testimonial => <SwiperSlide key={testimonial.id}>
+                     testimonials.map(testimonial => <SwiperSlide key={testimonial._id}>
                         <div className="shadow-2xl px-5 xl:px-10  rounded-lg h-full hover:bg-blue-50 py-14">
                            <p className="h-full md:h-full lg:h-48 xl:h-full"><q> {testimonial.message}</q></p>
                            <hr className="my-4" />
