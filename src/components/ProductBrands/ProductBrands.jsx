@@ -34,8 +34,11 @@ const ProductBrands = () => {
    // }
 
    return (
-      <div className="bg-white py-12 container mx-auto px-3 xl:px-0">
-         <h2 className="text-3xl font-semibold text-center mb-10">Brand Products</h2>
+      <div className="py-12 mb-12 container mx-auto px-3 xl:px-0">
+         <div className="mb-20 bg-pink-100 py-2 ">
+            <h2 className="text-4xl font-semibold text-center pb-5 text-pink-500">Choose Your Brand</h2>
+            <p className="text-center text-lg italic text-blue-700">Choosing Your Brand: A Deliberate Decision</p>
+         </div>
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {
                brandName.map(brand =>

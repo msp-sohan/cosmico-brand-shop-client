@@ -9,7 +9,7 @@ const OurShop = () => {
    const [OurShop, setOurShop] = useState([])
 
    useEffect(() => {
-      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app')
+      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/products')
          .then(res => res.json())
          .then(data => setOurShop(data))
    }, [])
@@ -19,7 +19,7 @@ const OurShop = () => {
       infinite: false,
       speed: 500,
       slidesToShow: 4,
-      slidesToScroll: 1,
+      slidesToScroll: 3,
       initialSlide: 0,
       responsive: [
          {
@@ -50,7 +50,7 @@ const OurShop = () => {
    };
 
    return (
-      <div className="bg-white overflow-hidden">
+      <div className="overflow-hidden bg-pink-50 py-12">
          <h4 className="text-xl text-center tracking-[15px] uppercase">Our Shop</h4>
          <h2 className="text-5xl uppercase tracking-[10px] mt-6 mb-12 text-center">Product</h2>
          <div>

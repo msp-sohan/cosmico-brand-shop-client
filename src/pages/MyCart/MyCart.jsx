@@ -20,7 +20,7 @@ const MyCart = () => {
          confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
          if (result.isConfirmed) {
-            fetch(`https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/${id}`, {
+            fetch(`https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/mycart/${id}`, {
                method: "DELETE",
             })
                .then(res => res.json())
