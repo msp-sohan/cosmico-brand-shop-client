@@ -1,5 +1,6 @@
 import Rating from "react-rating";
 import { useLoaderData, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductDetails = () => {
    const products = useLoaderData()
@@ -19,7 +20,7 @@ const ProductDetails = () => {
          .then(data => {
             console.log(data);
             if (data.insertedId) {
-               alert('Add to Cart Seccessfully')
+               Swal.fire('Add to Cart Seccessfully')
             }
          })
 

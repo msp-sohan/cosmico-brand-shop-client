@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { FaUserTie } from 'react-icons/fa';
 import { MdOutlineLogout } from 'react-icons/md';
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -18,11 +19,11 @@ const Navber = () => {
    const handleLogOut = () => {
       logOut()
          .then(() => {
-            alert("Successfully Logout")
+            toast.success("Successfully Logout")
             navigate("/login")
          })
          .catch(error => {
-            alert(error.message)
+            toast.error(error.message)
          })
    }
 
@@ -80,7 +81,7 @@ const Navber = () => {
                   user?.email ? <button onClick={handleDropdown}><img className="w-10 h-10 right-0 btn-circle" src={user?.photoURL ? user.photoURL : userPic}></img></button> : <Link to='/login' className="hover:btn-ghost hover:text-[#f8c89d] hover:border-b-2 hover:border-b-[#FFD9B7] text-xl text-white font-semibold p-2 rounded-md ">Login</Link>
                }
                {
-                  user && <div className={`absolute bg-sky-200 p-2 rounded top-16 ${dropdown ? "" : "hidden"}`}>
+                  user && <div className={`absolute bg-sky-200 p-2 z-40 rounded top-16 ${dropdown ? "" : "hidden"}`}>
                      <h2 className="text-lg flex items-center gap-4"><FaUserTie></FaUserTie>{user?.displayName ? user?.displayName : user?.email}</h2>
                      <hr className="border-b-2 border-b-black my-2" />
                      <button onClick={handleLogOut} className="text-lg flex items-center gap-4"><MdOutlineLogout></MdOutlineLogout>Log Out</button>

@@ -5,23 +5,23 @@ import Marquee from "react-fast-marquee";
 const Advertisement = () => {
    const [advertisement, setAdvertisement] = useState([])
 
-   useEffect(()=>{
+   useEffect(() => {
       fetch('http://localhost:5000/advertisement')
-      .then(res=>res.json())
-      .then(data=>setAdvertisement(data))
-   },[])
+         .then(res => res.json())
+         .then(data => setAdvertisement(data))
+   }, [])
 
    return (
       <div className="container mx-auto">
          <div className="flex justify-center gap-10 my-12">
             <Marquee>
-            {
-               advertisement.map(advertise =>
+               {
+                  advertisement.map(advertise =>
                      <div key={advertise._id} className="flex ml-32">
                         <img className="w-[25vw] h-[300px]" src={advertise.image} alt="" />
                      </div>
                   )
-            }
+               }
             </Marquee>
          </div>
          {/* <div className="flex justify-center gap-10 my-12">

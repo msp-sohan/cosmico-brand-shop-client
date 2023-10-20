@@ -20,23 +20,23 @@ const BrandProduct = () => {
       );
    }
    return (
-      <div className="">
+      <div className="bg-white">
          <div className="relative flex justify-center items-center">
             <img className="h-80 w-full" src="https://i.ibb.co/RB1zrhK/cosmico-footer-bg.webp" alt="" />
             <div className="w-full h-full absolute bg-green-500 bg-opacity-30"></div>
             <h2 className="absolute text-6xl text-gray-500 tracking-widest uppercase">{brandMatch[0].type}</h2>
          </div>
          <Advertisement></Advertisement>
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto gap-6">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto my-36 gap-6">
             {
                brandMatch.map(brandProduct =>
                   <div key={brandProduct._id}>
-                     <div className="card bg-base-100 shadow-xl">
+                     <div className="card bg-base-100 shadow-2xl drop-shadow-2xl">
                         <figure>
-                           <img src={brandProduct.image} alt="Product" className="h-72 w-full" />
+                           <img src={brandProduct.image} alt="Product" className="h-72 w-full border m-1 rounded-lg" />
                         </figure>
                         <div className="card-body px-3">
-                           <h2 className="card-title">{brandProduct.name}</h2>
+                           <h2 className="card-title h-14">{brandProduct.name}</h2>
                            <div className="flex items-center justify-between">
                               <h3 className="text-lg text-pink-500">{brand}</h3>
                               <h3 className="text-lg text-pink-500 capitalize">{brandProduct.type}</h3>

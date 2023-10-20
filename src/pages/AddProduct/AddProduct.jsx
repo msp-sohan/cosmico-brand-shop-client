@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 
 import { useContext } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const AddProduct = () => {
@@ -21,7 +22,7 @@ const AddProduct = () => {
       const products = { name, brand, type, price, description, rating, image, longDescription, userEmail }
       console.log(products)
       if (rating > 5) {
-         alert('Rating Must be Equal or less than 5')
+         Swal.fire('Rating Must be Equal or less than 5')
          return
       }
 
@@ -36,8 +37,9 @@ const AddProduct = () => {
          .then(data => {
             console.log(data)
             if (data.insertedId) {
-               alert('Product added Successfully')
+               Swal.fire('Product added Successfully')
             }
+            form.reset()
          })
    }
    const signle = ("'")

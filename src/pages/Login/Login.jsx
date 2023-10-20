@@ -1,9 +1,10 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import SocialLogin from "./SocialLogin";
-import "./login.css"
 import { useContext, useState } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../Provider/AuthProvider";
+import SocialLogin from "./SocialLogin";
+import "./login.css";
 
 const Login = () => {
    const { signInUser } = useContext(AuthContext)
@@ -11,7 +12,7 @@ const Login = () => {
    const navigate = useNavigate()
    const location = useLocation()
 
-   const handleLogin = (e) =>{
+   const handleLogin = (e) => {
       e.preventDefault()
       const form = e.target
       const email = form.email.value
@@ -21,12 +22,12 @@ const Login = () => {
          .then(result => {
             if (result.user) {
                navigate(location?.state ? location.state : "/")
-               alert('Successfully Login')
+               Swal.fire('Successfully Login')
             }
          })
          .catch(error => {
             if (error.message) {
-               alert("Email and password do not match.")
+               Swal.fire("Email and password do not match.")
             }
          })
    }
@@ -41,8 +42,8 @@ const Login = () => {
                   <h1>Login</h1>
                   <div className="inputbox">
                      <ion-icon name="mail-outline"></ion-icon>
-                     <input type="email" name="email" required/>
-                        <label htmlFor="">Email</label>
+                     <input type="email" name="email" required />
+                     <label htmlFor="">Email</label>
                   </div>
                   <div className="inputbox">
                      <ion-icon name="lock-closed-outline"></ion-icon>
@@ -55,7 +56,7 @@ const Login = () => {
                      </p>
                   </div>
                   <div className="forget">
-                     <label htmlFor=""><input type="checkbox"/>Remember Me</label>
+                     <label htmlFor=""><input type="checkbox" />Remember Me</label>
                      <a href="#">Forget Password</a>
                   </div>
                   <button className="button"><input className="cursor-pointer" type="submit" value="Log in" /></button>
