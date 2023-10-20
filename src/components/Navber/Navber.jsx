@@ -68,7 +68,7 @@ const Navber = () => {
                </div>
                <Link to="/" className="btn btn-ghost normal-case text-white text-xl ">
                   <img className="w-10 " src="https://i.ibb.co/2N3fKwV/3.png" alt="" />
-                  <h3>Cosmic</h3>
+                  <h3>Cosmico</h3>
                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">

@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { BsTelephoneForward, BsClock } from 'react-icons/bs';
-import { IoLocationOutline } from 'react-icons/io5';
+import { BsClock, BsTelephoneForward } from 'react-icons/bs';
 import { GrMailOption } from 'react-icons/gr';
+import { IoLocationOutline } from 'react-icons/io5';
+import { Link } from "react-router-dom";
 import SocialIcon from "../SocialIcon/SocialIcon";
 
 
@@ -23,9 +23,9 @@ const Footer = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:flex justify-between items-center px-5 text-lg">
                <div className="order-2 lg:order-1 py-12 lg:py-0">
-                  <p className="flex items-center gap-6"><BsTelephoneForward /><span>+123 488 9652</span></p>
-                  <p className="flex items-center gap-6"><IoLocationOutline /><span>25 West 21th Street, Miami FL, USA</span></p>
-                  <p className="flex items-center gap-6"><GrMailOption /><span>info@luchiana.com</span></p>
+                  <p className="flex items-center gap-6"><BsTelephoneForward /><span>+123 456 7890</span></p>
+                  <p className="flex items-center gap-6"><IoLocationOutline /><span>Level-4, 34, Awal Centre, Banani, Dhaka</span></p>
+                  <p className="flex items-center gap-6"><GrMailOption /><span>info@cosmico.com</span></p>
                   <p className="flex items-center gap-6"><BsClock /><span>Mon-Fri: 10:00 - 18:00</span></p>
                </div>
                <div className="order-3 md:order-1 lg:order-2">

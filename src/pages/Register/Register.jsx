@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
 import SocialLogin from "../Login/SocialLogin";
-import "./register.css"
-import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import "./register.css";
 
 
 const Register = () => {
@@ -12,10 +13,10 @@ const Register = () => {
    const [showPass, setShowPass] = useState(false)
    const navigate = useNavigate()
 
-   const handleRegister = (e) =>{
+   const handleRegister = (e) => {
       e.preventDefault()
       const form = e.target
-      const name= form.name.value
+      const name = form.name.value
       const photo = form.photo.value
       const email = form.email.value
       const password = form.password.value
@@ -39,7 +40,7 @@ const Register = () => {
       createUser(email, password)
          .then(result => {
             if (result.user) {
-               alert('Account Create Successfully')
+               Swal.fire('Account Create Successfully')
                navigate("/")
             }
             if (!user) {
@@ -48,16 +49,16 @@ const Register = () => {
                      navigate("/");
                   })
                   .catch(error => {
-                     alert(error.message);
+                     Swal.fire(error.message);
                   })
             } else {
-               alert('Account created successfully');
+               Swal.fire('Account created successfully');
                navigate("/");
             }
          })
          .catch(error => {
             if (error.message) {
-               alert("Email Already in Use.")
+               Swal.fire("Email Already in Use.")
             }
 
          })
