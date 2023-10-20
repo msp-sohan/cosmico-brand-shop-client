@@ -20,7 +20,7 @@ const MyCart = () => {
          confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
          if (result.isConfirmed) {
-            fetch(`http://localhost:5000/mycart/${id}`, {
+            fetch(`https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/${id}`, {
                method: "DELETE",
             })
                .then(res => res.json())
@@ -52,7 +52,9 @@ const MyCart = () => {
                            <img src={product.image} alt="Product" className="h-72 w-full" />
                         </figure>
                         <div className="card-body px-3">
-                           <h2 className="card-title">{product.name}</h2>
+                           <div className="h-14">
+                              <h2 className="card-title">{product.name}</h2>
+                           </div>
                            <div className="flex items-center justify-between">
                               <h3 className="text-lg text-pink-500">{product.brand}</h3>
                               <h3 className="text-lg text-pink-500 capitalize">{product.type}</h3>

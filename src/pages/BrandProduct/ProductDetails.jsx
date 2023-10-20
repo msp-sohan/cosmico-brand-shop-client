@@ -9,7 +9,7 @@ const ProductDetails = () => {
    const single = products.find(product => product._id === id)
 
    const handleAddCart = (cart) => {
-      fetch('http://localhost:5000/mycart', {
+      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/mycart', {
          method: "POST",
          headers: {
             'Content-type': 'application/json'

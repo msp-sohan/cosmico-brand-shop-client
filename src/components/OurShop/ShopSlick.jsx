@@ -11,7 +11,9 @@ const ShopSlick = ({ shopData }) => {
                <img src={image} alt="Product" className="h-72 w-full" />
             </figure>
             <div className="card-body px-3 drop-shadow-2xl">
-               <h2 className="card-title h-10">{name}</h2>
+               <div className="h-12">
+                  <h2 className="card-title">{name}</h2>
+               </div>
                <div className="flex items-center justify-between">
                   <h3 className="text-lg text-pink-500">{brand}</h3>
                   <h3 className="text-lg text-pink-500 capitalize">{type}</h3>

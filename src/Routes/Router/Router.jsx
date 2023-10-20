@@ -36,22 +36,22 @@ const router = createBrowserRouter([
          {
             path: "/products/:brand",
             element: <BrandProduct></BrandProduct>,
-            loader: () => fetch(`http://localhost:5000/products`)
+            loader: () => fetch(`https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/products`)
          },
          {
             path: "/products/:brand/:id",
             element: <PrivetRouter><ProductDetails></ProductDetails></PrivetRouter>,
-            loader: () => fetch(`http://localhost:5000/products`)
+            loader: () => fetch(`https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app`)
          },
          {
             path: "/update/:id",
             element: <PrivetRouter><UpdateProduct></UpdateProduct></PrivetRouter>,
-            loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+            loader: ({ params }) => fetch(`https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/${params.id}`)
          },
          {
             path: "/mycart",
             element: <PrivetRouter><MyCart></MyCart></PrivetRouter>,
-            loader: () => fetch('http://localhost:5000/mycart')
+            loader: () => fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/mycart')
          }
       ]
    }

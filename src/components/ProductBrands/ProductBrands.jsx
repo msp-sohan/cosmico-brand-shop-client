@@ -4,20 +4,22 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const ProductBrands = () => {
    const [brandName, setBrandName] = useState([])
+
    const [allProduct, setAllProduct] = useState([])
+
    const { user } = useContext(AuthContext)
    console.log('Product Brand', user);
    // const navigate = useNavigate()
 
 
    useEffect(() => {
-      fetch('http://localhost:5000/products/brands')
+      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/products/brands')
          .then(res => res.json())
          .then(data => setBrandName(data))
    }, [])
 
    useEffect(() => {
-      fetch('http://localhost:5000/products')
+      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app')
          .then(res => res.json())
          .then(data => setAllProduct(data))
    }, [])

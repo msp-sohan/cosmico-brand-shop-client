@@ -36,7 +36,9 @@ const BrandProduct = () => {
                            <img src={brandProduct.image} alt="Product" className="h-72 w-full border m-1 rounded-lg" />
                         </figure>
                         <div className="card-body px-3">
-                           <h2 className="card-title h-14">{brandProduct.name}</h2>
+                           <div className=" h-14">
+                              <h2 className="card-title">{brandProduct.name}</h2>
+                           </div>
                            <div className="flex items-center justify-between">
                               <h3 className="text-lg text-pink-500">{brand}</h3>
                               <h3 className="text-lg text-pink-500 capitalize">{brandProduct.type}</h3>

@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateProduct = () => {
    const singleProduct = useLoaderData()
@@ -20,7 +21,7 @@ const UpdateProduct = () => {
          return
       }
 
-      fetch(`http://localhost:5000/products/${singleProduct._id}`, {
+      fetch(`https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/${singleProduct._id}`, {
          method: "PUT",
          headers: {
             'Content-type': 'application/json'
@@ -31,7 +32,7 @@ const UpdateProduct = () => {
          .then(data => {
             console.log(data)
             if (data.modifiedCount) {
-               alert('Product Updated Successfully')
+               Swal.fire('Product Updated Successfully')
             }
          })
    }

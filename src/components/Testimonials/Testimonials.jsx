@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+
+import { FreeMode, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import "./testimonial.css";
 
 
 const Testimonials = () => {
    const [testimonials, setTestimonial] = useState([])
    useEffect(() => {
-      fetch('http://localhost:5000/testimonial')
+      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/testimonial')
          .then(res => res.json())
          .then(data => setTestimonial(data))
    }, [])
@@ -38,14 +40,15 @@ const Testimonials = () => {
             </div>
             <div className="">
                <Swiper
+                  // slidesPerView={3}
                   spaceBetween={30}
                   freeMode={true}
+                  breakpoints={breakpoints}
                   pagination={{
                      clickable: true,
                   }}
-                  breakpoints={breakpoints}
-                  modules={[Pagination]}
-                  className="mySwiper w-96 px-24">
+                  modules={[FreeMode, Pagination]}
+                  className="mySwiper">
                   {
                      testimonials.map(testimonial => <SwiperSlide key={testimonial.id}>
                         <div className="shadow-2xl px-5 xl:px-10  rounded-lg h-full hover:bg-blue-50 py-14">

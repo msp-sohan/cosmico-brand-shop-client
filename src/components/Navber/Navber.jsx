@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import toast from "react-hot-toast";
 import { FaUserTie } from 'react-icons/fa';
 import { MdOutlineLogout } from 'react-icons/md';
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
 import userPic from "../../assets/user.png";
 
@@ -19,11 +19,11 @@ const Navber = () => {
    const handleLogOut = () => {
       logOut()
          .then(() => {
-            toast.success("Successfully Logout")
+            Swal.fire("Successfully Logout")
             navigate("/login")
          })
          .catch(error => {
-            toast.error(error.message)
+            Swal.fire(error.message)
          })
    }
 

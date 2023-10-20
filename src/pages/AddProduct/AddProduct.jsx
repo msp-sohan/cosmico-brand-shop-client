@@ -20,13 +20,13 @@ const AddProduct = () => {
       const image = form.image.value;
       const rating = form.rating.value;
       const products = { name, brand, type, price, description, rating, image, longDescription, userEmail }
-      console.log(products)
+
       if (rating > 5) {
          Swal.fire('Rating Must be Equal or less than 5')
          return
       }
 
-      fetch('http://localhost:5000/products', {
+      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app', {
          method: "POST",
          headers: {
             'Content-type': 'application/json'
@@ -35,7 +35,6 @@ const AddProduct = () => {
       })
          .then(res => res.json())
          .then(data => {
-            console.log(data)
             if (data.insertedId) {
                Swal.fire('Product added Successfully')
             }

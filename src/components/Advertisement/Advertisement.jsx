@@ -6,7 +6,7 @@ const Advertisement = () => {
    const [advertisement, setAdvertisement] = useState([])
 
    useEffect(() => {
-      fetch('http://localhost:5000/advertisement')
+      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/advertisement')
          .then(res => res.json())
          .then(data => setAdvertisement(data))
    }, [])
