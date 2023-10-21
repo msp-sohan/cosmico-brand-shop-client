@@ -68,10 +68,10 @@ const Register = () => {
    }
    return (
       <div>
-         <div className="body">
+         <div className="body h-full md:h-[90vh] lg:h-screen">
             <section>
                <form onSubmit={handleRegister}>
-                  <h1>Sign Up</h1>
+                  <h1 className="text-3xl font-sans font-extrabold tracking-widest">Sign Up</h1>
                   <div className="inputbox">
                      <ion-icon name="mail-outline"></ion-icon>
                      <input type="text" name="name" required />

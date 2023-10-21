@@ -80,7 +80,7 @@ const Navber = () => {
                </div>
                <Link to="/" className="btn btn-ghost normal-case text-white text-xl ">
                   <img className="w-10 " src="https://i.ibb.co/2N3fKwV/3.png" alt="" />
-                  <h3>Cosmico</h3>
+                  <h3 className="font-sans text-2xl">Cosmico</h3>
                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -96,7 +96,7 @@ const Navber = () => {
                </div>
                <div>
                   {
-                     user?.email ? <button onClick={handleDropdown}><img className="w-10 h-10 right-0 btn-circle" src={user?.photoURL ? user.photoURL : userPic}></img></button> : <Link to='/login' className="hover:btn-ghost hover:text-[#f8c89d] hover:border-b-2 hover:border-b-[#FFD9B7] text-xl text-white font-semibold p-2 rounded-md ">Login</Link>
+                     user?.email ? <button onClick={handleDropdown}><img className="w-10 h-10 right-0 btn-circle" src={user?.photoURL ? user.photoURL : userPic}></img></button> : <Link to='/login' className="hover:btn-ghost font-serif hover:text-white hover:border-b-2 hover:border-b-[#FFD9B7] text-xl text-white font-bold p-2 rounded-md ">Login</Link>
                   }
                   {
                      user && <div className={`absolute bg-sky-200 p-2 z-40 rounded top-16 right-5 ${dropdown ? "" : "hidden"}`}>

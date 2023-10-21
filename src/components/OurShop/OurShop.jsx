@@ -16,7 +16,7 @@ const OurShop = () => {
 
    var settings = {
       dots: true,
-      infinite: false,
+      infinite: true,
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 3,
@@ -42,8 +42,9 @@ const OurShop = () => {
          {
             breakpoint: 480,
             settings: {
+               dots: true,
                slidesToShow: 1,
-               slidesToScroll: 1
+               slidesToScroll: 2
             }
          }
       ]

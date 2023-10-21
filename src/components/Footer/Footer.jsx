@@ -29,7 +29,7 @@ const Footer = () => {
                   <p className="flex items-center gap-6"><BsClock /><span>Mon-Fri: 10:00 - 18:00</span></p>
                </div>
                <div className="order-3 md:order-1 lg:order-2">
-                  <h2 className="text-center text-3xl font-semibold text-yellow-600 pb-3">COSMICO</h2>
+                  <h2 className="text-center text-3xl font-extrabold font-sans tracking-[10px] text-yellow-600 pb-3">COSMICO</h2>
                   <SocialIcon></SocialIcon>
                </div>
                <div className="text-center lg:text-right lg:w-[360px] w-full mt-5 order-1 md:order-3 lg:order-3 md:col-span-4 ">

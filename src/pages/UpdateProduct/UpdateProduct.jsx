@@ -14,13 +14,13 @@ const UpdateProduct = () => {
       const image = form.image.value;
       const rating = form.rating.value;
       const products = { name, brand, type, price, rating, image }
-      console.log(products)
+
       if (rating > 5) {
-         alert('Rating Must be Equal or less than 5')
+         Swal.fire('Rating Must be Equal or less than 5')
          return
       }
 
-      fetch(`https://b8a10-brandshop-server-side-mspsohan.vercel.app/${singleProduct._id}`, {
+      fetch(`https://b8a10-brandshop-server-side-mspsohan.vercel.app/products/${singleProduct._id}`, {
          method: "PUT",
          headers: {
             'Content-type': 'application/json'
@@ -32,6 +32,7 @@ const UpdateProduct = () => {
             console.log(data)
             if (data.modifiedCount) {
                Swal.fire('Product Updated Successfully')
+               form.reset()
             }
          })
    }
@@ -42,7 +43,7 @@ const UpdateProduct = () => {
          <div id="NewRootRoot" className="flex flex-col w-[95vw] xl:w-[60vw] mx-auto shadow-2xl drop-shadow-2xl bg-transparent py-16">
             <div className="bg-white bg-opacity-90 flex flex-col justify-center gap-8 items-center xl:px-[100px] py-16 rounded">
                <div className="relative flex flex-col items-start">
-                  <div className="text-center text-5xl font-['Rancho'] text-[#374151] top-0 left-0 h-12 w-96">Update Product</div>
+                  <div className="text-center text-2xl xl:text-5xl text-pink-500 font-['Rancho'] top-0 left-0"><span className="text-black">Update</span> <br />{singleProduct.name.split(" ")[1]} {singleProduct.name.split(" ")[2]}</div>
                </div>
                <div className="text-center text-sm font-['Raleway'] leading-[30px] text-[rgba(27,_26,_26,_0.7)] w-full xl:w-5/6">
                   <p>

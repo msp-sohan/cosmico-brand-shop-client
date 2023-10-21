@@ -6,6 +6,10 @@ export default {
   ],
   darkMode: "class",
   theme: {
+    fontFamily: {
+      sans: ['Playfair Display', 'sans-serif'],
+      serif: ['Roboto', 'serif'],
+    },
     extend: {},
   },
   plugins: [require("daisyui")],

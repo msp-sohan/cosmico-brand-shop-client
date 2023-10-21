@@ -12,13 +12,13 @@ const Advertisement = () => {
    }, [])
 
    return (
-      <div className="container mx-auto">
+      <div className="container mx-auto dark:bg-gray-800">
          <div className="flex justify-center gap-10 my-12">
             <Marquee>
                {
                   advertisement.map(advertise =>
                      <div key={advertise._id} className="flex ml-32">
-                        <img className="w-[25vw] h-[300px]" src={advertise.image} alt="" />
+                        <img className="w-[300px] 2xl:w-[380px] h-[300px]" src={advertise.image} alt="" />
                      </div>
                   )
                }

@@ -11,15 +11,17 @@ const SocialLogin = () => {
    const handleGoogleLogin = () => {
       googleLogin()
          .then(result => {
+            console.log('user', result.user);
             if (result.user) {
-               navigate(location?.state ? location.state : "/")
-               Swal.fire('Successfully Login With Google')
+               navigate(location?.state ? location.state : "/");
+               Swal.fire('Successfully Login With Google');
             }
          })
          .catch(error => {
-            Swal.fire(error.message)
-         })
+            Swal.fire(error.message);
+         });
    }
+
    return (
       <div>
          <button onClick={handleGoogleLogin} className="w-full bg-white py-2 rounded-[40px] text-md font-semibold mt-2 hover:bg-blue-500 hover:text-white">Sign in With Google</button>

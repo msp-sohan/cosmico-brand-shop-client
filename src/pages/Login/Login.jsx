@@ -36,10 +36,10 @@ const Login = () => {
    }
    return (
       <div>
-         <div className="body">
+         <div className="body h-full md:h-[90vh] lg:h-screen py-5 md:py-0">
             <section>
                <form onSubmit={handleLogin}>
-                  <h1>Login</h1>
+                  <h1 className="text-3xl font-sans font-extrabold tracking-widest">Welcome Back</h1>
                   <div className="inputbox">
                      <ion-icon name="mail-outline"></ion-icon>
                      <input type="email" name="email" required />

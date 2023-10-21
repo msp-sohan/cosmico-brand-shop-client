@@ -26,7 +26,7 @@ const AddProduct = () => {
          return
       }
 
-      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app', {
+      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/products', {
          method: "POST",
          headers: {
             'Content-type': 'application/json'

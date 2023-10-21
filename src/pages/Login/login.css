@@ -1,18 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
 * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   font-family: 'poppins', sans-serif;
+   font-family: "poppins", sans-serif;
 }
-
 
 .body {
    display: flex;
    align-items: center;
    justify-content: center;
-   min-height: 100vh;
+   /* min-height: 100vh; */
    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1b2Lo8HSZ_sHwugGj2m_Rg8xS-8PGZQYOpw&usqp=CAU);
    background-repeat: no-repeat;
    background-position: center;
@@ -58,8 +57,8 @@ h1 {
    transition: all 0.5s ease-in-out;
 }
 
-input:focus~label,
-input:valid~label {
+input:focus ~ label,
+input:valid ~ label {
    top: -5px;
 }
 
@@ -88,7 +87,6 @@ input:valid~label {
    color: #fff;
    display: flex;
    justify-content: space-between;
-
 }
 
 .forget label {
