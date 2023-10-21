@@ -26,7 +26,7 @@ const BrandProduct = () => {
             <div className="w-full h-full absolute bg-green-500 dark:bg-gray-800 dark:bg-opacity-60 bg-opacity-30"></div>
             <h2 className="absolute text-4xl md:text-5xl xl:text-6xl text-gray-500 dark:text-pink-500 tracking-widest uppercase">{brandMatch[0].type}</h2>
          </div>
-         <Advertisement></Advertisement>
+         <Advertisement brandMatch={brandMatch}></Advertisement>
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto my-36 px-3 py-5 gap-6">
             {
                brandMatch.map(brandProduct =>
