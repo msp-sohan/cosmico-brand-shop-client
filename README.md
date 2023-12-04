@@ -1,3 +1,45 @@
+# Cosmico - Cosmetic and Beauty Brand Shop
+
+Cosmico is an online platform for purchasing a variety of cosmetic and beauty products from renowned brands such as L'OREAL, Chanel, Urban Decay, Procter & Gamble, Revlon, and Avon.
+
+## Live Website
+
+Explore Cosmico: [Cosmico Brand Shop](https://cosmico-brand-shop.netlify.app)
+
+## Repository Links
+
+-  [Client Side Repository](https://github.com/mspsohan/cosmico-brand-shop-client)
+-  [Server Side Repository](https://github.com/mspsohan/cosmico-brand-shop-server)
+
+## Features
+
+-  **Active Routing System:** The website employs an active routing system in the navbar, indicating the currently selected page. For example, the "Home" button appears differently when on the home route.
+
+-  **User Authentication:** The right side of the navbar displays user information when logged in; otherwise, a login button is visible.
+
+-  **Dynamic Banner Section:** The banner section is an image slider that automatically transitions between different banner images.
+
+-  **Brand-Based Cards:** Six brand-based cards feature images and brand names. Clicking a brand card redirects users to the respective brand product page.
+
+-  **Product Cards:** Each product card includes image, name, brand name, type, price, description, rating, and buttons for product details and updating the profile. The product details button redirects to a detailed product page with an "Add to Cart" button. Access to this page is protected.
+
+-  **Protected Routes:** Certain pages, such as updating a product or adding a product, are protected routes accessible only to logged-in users.
+
+-  **Redirect After Login:** Users are redirected to the initially intended page after logging in.
+
+-  **Registration Page:** Four fields for full name, profile image, valid email, and password. Password criteria are enforced, and users receive error messages for incomplete or invalid entries.
+
+-  **Toggle Button:** The registration and login forms include a toggle button for easy navigation between the login and registration pages.
+
+## Technology Stack
+
+-  **Frontend:** React.js
+-  **Backend:** Node.js, Express.js
+-  **Database:** MongoDB
+-  **Styling:** CSS, Tailwind Css.
+-  **Deployment:** Netlify (Frontend), Vercel (Backend).
+
+<!--
 ### Website Name: [Cosmico](https://cosmico-brand-shop.netlify.app)
 
 ### website Live Link: https://cosmico-brand-shop.netlify.app
@@ -23,4 +65,4 @@ This is an Cosmetic and Beauty Brand website where people can buy different type
 
 -  In the registration page, there are four fields to fill out: full name, profile image, valid email, and password. Users must complete all the fields; otherwise, they will receive an error message. Additionally, if the user doesn't meet the password criteria, such as having a minimum of six characters with at least one capital letter and one special character, they will see an error message below the password field.
 
--  On the registration and login forms, there is a toggle button. If a new user clicks it, the login page will redirect to the registration page. If a user already has an account, clicking the toggle button will redirect to the login page.
+-  On the registration and login forms, there is a toggle button. If a new user clicks it, the login page will redirect to the registration page. If a user already has an account, clicking the toggle button will redirect to the login page. -->
