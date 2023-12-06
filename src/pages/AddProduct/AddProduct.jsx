@@ -1,45 +1,38 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
-
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useAxios from "../../hooks/useAxios";
+import toast from "react-hot-toast";
 
 const AddProduct = () => {
    const { user } = useContext(AuthContext)
    const userEmail = user.email;
+   const axios = useAxios()
 
-   const handleAddProduct = e => {
+   const handleAddProduct = async (e) => {
       e.preventDefault()
       const form = e.target;
       const name = form.name.value;
       const brand = form.brand.value;
       const type = form.type.value;
-      const price = form.price.value;
+      const price = parseInt(form.price.value)
       const description = form.description.value;
       const longDescription = form.longDescription.value;
       const image = form.image.value;
       const rating = form.rating.value;
-      const products = { name, brand, type, price, description, rating, image, longDescription, userEmail }
 
       if (rating > 5) {
-         Swal.fire('Rating Must be Equal or less than 5')
+         toast.error('Rating Must be Equal or less than 5')
          return
       }
 
-      fetch('https://cosmico-brand-shop-server-r36j3c39y-sohan-perves-projects.vercel.app/products', {
-         method: "POST",
-         headers: {
-            'Content-type': 'application/json'
-         },
-         body: JSON.stringify(products)
-      })
-         .then(res => res.json())
-         .then(data => {
-            if (data.insertedId) {
-               Swal.fire('Product added Successfully')
-            }
-            form.reset()
-         })
+      const products = { name, brand, type, price, description, rating, image, longDescription, userEmail }
+
+      const res = await axios.post("/products", products)
+      if (res?.data?.insertedId) {
+         Swal.fire('Product added Successfully')
+         form.reset()
+      }
    }
    const signle = ("'")
 

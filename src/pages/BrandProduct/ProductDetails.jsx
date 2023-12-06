@@ -15,7 +15,7 @@ const ProductDetails = () => {
    const handleAddCart = (cart) => {
       const { brand, description, name, price, rating, type, image } = cart;
       const data = { brand, description, name, price, rating, type, image, email }
-      fetch('https://b8a10-brandshop-server-side-mspsohan.vercel.app/mycart', {
+      fetch('https://cosmico-brand-shop-server.vercel.app/mycart', {
          method: "POST",
          headers: {
             'Content-type': 'application/json'
@@ -24,7 +24,6 @@ const ProductDetails = () => {
       })
          .then(res => res.json())
          .then(data => {
-            console.log(data);
             if (data.insertedId) {
                Swal.fire('Add to Cart Seccessfully')
             }

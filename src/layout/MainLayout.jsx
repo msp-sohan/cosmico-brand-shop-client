@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import CopyRight from "../../components/Footer/CopyRight";
-import Footer from "../../components/Footer/Footer";
-import Navber from "../../components/Navber/Navber";
+import CopyRight from "../components/Footer/CopyRight";
+import Footer from "../components/Footer/Footer";
+import Navber from "../components/Navber/Navber";
 
 const MainLayout = () => {
    return (

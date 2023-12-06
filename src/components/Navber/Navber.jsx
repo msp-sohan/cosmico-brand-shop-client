@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { FaUserTie } from 'react-icons/fa';
-import { MdDarkMode, MdOutlineLogout } from 'react-icons/md';
+import { MdDarkMode, MdDashboard, MdOutlineLogout } from 'react-icons/md';
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -43,15 +43,15 @@ const Navber = () => {
       <NavLink onClick={() => { setMenu(false) }} to="/" className={({ isActive, isPending }) =>
          isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#f22ffc]  text-[#f22ffc] text-xl mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl mx-3 rounded-none "}>Home
       </NavLink>
-      <NavLink onClick={() => { setMenu(false) }} to="/addproduct" className={({ isActive, isPending }) =>
+      {/* <NavLink onClick={() => { setMenu(false) }} to="/addproduct" className={({ isActive, isPending }) =>
          isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#f22ffc]  text-[#f22ffc] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl  mx-3 rounded-none"}>Add Product
-      </NavLink>
-      {/* <NavLink onClick={() => { setMenu(false) }} to="/about" className={({ isActive, isPending }) =>
+      </NavLink> */}
+      <NavLink onClick={() => { setMenu(false) }} to="/about" className={({ isActive, isPending }) =>
          isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#f22ffc]  text-[#f22ffc] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl  mx-3 rounded-none "}>About Us
       </NavLink>
       <NavLink onClick={() => { setMenu(false) }} to="/contact" className={({ isActive, isPending }) =>
          isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#f22ffc]  text-[#f22ffc] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl  mx-3 rounded-none "}>Contact Us
-      </NavLink> */}
+      </NavLink>
       {/* <NavLink to="/login" className={({ isActive, isPending }) =>
          isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#f22ffc]  text-[#f22ffc] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl  mx-3 rounded-none "}>Login
       </NavLink> */}
@@ -99,10 +99,12 @@ const Navber = () => {
                      user?.email ? <button onClick={handleDropdown}><img className="w-10 h-10 right-0 btn-circle" src={user?.photoURL ? user.photoURL : userPic}></img></button> : <Link to='/login' className="hover:btn-ghost font-serif hover:text-white hover:border-b-2 hover:border-b-[#FFD9B7] text-xl text-white font-bold p-2 rounded-md ">Login</Link>
                   }
                   {
-                     user && <div className={`absolute bg-sky-200 p-2 z-40 rounded top-16 right-5 ${dropdown ? "" : "hidden"}`}>
-                        <h2 className="text-lg flex items-center gap-4"><FaUserTie></FaUserTie>{user?.displayName ? user?.displayName : user?.email}</h2>
+                     user &&
+                     <div className={`absolute bg-sky-200 py-2 z-40 rounded top-16 right-5 ${dropdown ? "" : "hidden"}`}>
+                        <h2 className="text-lg px-2 flex items-center gap-4"><FaUserTie></FaUserTie>{user?.displayName ? user?.displayName : user?.email}</h2>
+                        <Link to="/dashboard" className="text-lg px-2 flex items-center gap-4 mt-2 hover:bg-[#e29070] hover:text-white"><MdDashboard />Dashboard</Link>
                         <hr className="border-b-2 border-b-black my-2" />
-                        <button onClick={handleLogOut} className="text-lg flex items-center gap-4"><MdOutlineLogout></MdOutlineLogout>Log Out</button>
+                        <button onClick={handleLogOut} className="text-lg px-2 flex items-center w-full gap-4 hover:bg-[#e29070] hover:text-white"><MdOutlineLogout></MdOutlineLogout>Log Out</button>
                      </div>
                   }
                </div>

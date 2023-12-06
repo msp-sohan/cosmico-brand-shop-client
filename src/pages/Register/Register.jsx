@@ -20,7 +20,6 @@ const Register = () => {
       const photo = form.photo.value
       const email = form.email.value
       const password = form.password.value
-      console.log(name, photo, email, password)
 
       const lengthError = /^.{6,}$/;
       const spError = /[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]/;

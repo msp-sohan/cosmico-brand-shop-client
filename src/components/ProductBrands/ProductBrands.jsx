@@ -4,33 +4,11 @@ import { Link } from "react-router-dom";
 const ProductBrands = () => {
    const [brandName, setBrandName] = useState([])
 
-   // const [allProduct, setAllProduct] = useState([])
-
-   // const { user } = useContext(AuthContext)
-   // console.log('Product Brand', user);
-   // const navigate = useNavigate()
-
-
    useEffect(() => {
-      fetch('https://b8a10-brandshop-server-side-mspsohan.vercel.app/products/brands')
+      fetch('https://cosmico-brand-shop-server.vercel.app/products/brands')
          .then(res => res.json())
          .then(data => setBrandName(data))
    }, [])
-
-   // useEffect(() => {
-   //    fetch('https://b8a10-brandshop-server-side-mspsohan.vercel.app/products')
-   //       .then(res => res.json())
-   //       .then(data => setAllProduct(data))
-   // }, [])
-
-   // const signleProduct = allProduct.map(product => {
-   //    return product
-   // })
-   // console.log(signleProduct, 'single')
-
-   // const handleShowProduct = (brand) => {
-   //    navigate(`/${brand}`)
-   // }
 
    return (
       <div className="py-12 mb-12 container mx-auto px-3 xl:px-0">

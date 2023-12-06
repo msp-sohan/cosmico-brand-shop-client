@@ -9,7 +9,7 @@ const OurShop = () => {
    const [OurShop, setOurShop] = useState([])
 
    useEffect(() => {
-      fetch('https://b8a10-brandshop-server-side-mspsohan.vercel.app/products')
+      fetch('https://cosmico-brand-shop-server.vercel.app/products')
          .then(res => res.json())
          .then(data => setOurShop(data))
    }, [])

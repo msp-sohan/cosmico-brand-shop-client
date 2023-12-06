@@ -1,18 +1,23 @@
 import { useContext, useState } from "react";
-import Rating from "react-rating";
-import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useCartItem from "../../hooks/useCartItem";
+import CheckoutModal from "./CheckoutModal";
+import useAxios from "../../hooks/useAxios";
 
 const MyCart = () => {
+   const [isOpen, setIsOpen] = useState(false)
+   const axios = useAxios()
    const { user } = useContext(AuthContext)
-   const product = useLoaderData()
-   const [myCart, setMyCart] = useState(product)
+   const { data: userCart, refetch } = useCartItem({ email: user?.email })
 
-   const userCart = myCart.filter(cart => cart.email == user.email)
+   const total = userCart?.reduce((sum, cart) => sum + cart?.price, 0)
+
+   function closeModal() {
+      setIsOpen(false)
+   }
 
    const handleDelete = (id) => {
-      console.log(id);
       Swal.fire({
          title: 'Are you sure?',
          text: "You won't be able to revert this!",
@@ -21,29 +26,22 @@ const MyCart = () => {
          confirmButtonColor: '#3085d6',
          cancelButtonColor: '#d33',
          confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
+      }).then(async (result) => {
          if (result.isConfirmed) {
-            fetch(`https://b8a10-brandshop-server-side-mspsohan.vercel.app/mycart/${id}`, {
-               method: "DELETE",
-            })
-               .then(res => res.json())
-               .then(data => {
-                  console.log(data);
-                  if (data.deletedCount > 0) {
-                     Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                     )
-                     const remaining = myCart.filter(data => data._id !== id)
-                     setMyCart(remaining)
-                  }
-               })
+            const { data } = await axios.delete(`/mycart/${id}`)
+            if (data.deletedCount > 0) {
+               Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+               )
+               refetch()
+            }
          }
       })
    }
 
-   if (userCart.length === 0) {
+   if (userCart?.length === 0) {
       return (
          <div className="my-[30vh]">
             <h2 className="text-3xl text-center mt-4">
@@ -54,44 +52,116 @@ const MyCart = () => {
    }
 
    return (
-      <div className="bg-white">
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto gap-6 my-12 px-3 xl:px-0">
-            {
-               userCart.map(product =>
-                  <div key={product._id}>
-                     <div className="card bg-base-100 shadow-2xl drop-shadow-xl">
-                        <figure>
-                           <img src={product.image} alt="Product" className="h-72 w-full" />
-                        </figure>
-                        <div className="card-body px-3">
-                           <div className="h-14">
-                              <h2 className="card-title">{product.name}</h2>
-                           </div>
-                           <div className="flex items-center justify-between">
-                              <h3 className="text-lg text-pink-500">{product.brand}</h3>
-                              <h3 className="text-lg text-pink-500 capitalize">{product.type}</h3>
-                           </div>
-                           <p className="text-[14px]">{product.description}</p>
+      <div className="py-24 bg-gray-100 font-poppins dark:bg-gray-700">
+         <div className="px-4 py-6 mx-auto container lg:py-4 md:px-6">
+            <div>
+               <h2 className="mb-8 text-4xl font-bold dark:text-gray-400">Your Cart</h2>
+               <div className="mx-auto w-full px-4 py-8 sm:px-8">
+                  <div className="overflow-y-hidden rounded-lg border">
+                     <div className="overflow-x-auto">
+                        <table className="w-full">
+                           <thead>
+                              <tr className="bg-blue-600 text-left text-xs font-semibold uppercase tracking-widest text-white">
+                                 <th className="px-5 py-3">#</th>
+                                 {/* <th className="px-5 py-3">Image</th> */}
+                                 <th className="px-5 py-3">Name</th>
+                                 <th className="px-5 py-3">Price</th>
+                                 <th className="px-5 py-3">Brand</th>
+                                 <th className="px-5 py-3">Qty</th>
+                                 <th className="px-5 py-3">Action</th>
+                              </tr>
+                           </thead>
+                           <tbody className="text-gray-500">
+                              {
+                                 userCart?.map((cart, index) => (
+                                    <tr key={cart?._id}>
+                                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                          <p className="whitespace-no-wrap">{index + 1}</p>
+                                       </td>
+                                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                          <div className="flex items-center">
+                                             <div className="h-16 w-16 flex-shrink-0">
+                                                <img className="h-full w-full rounded" src={cart?.image} alt="" />
+                                             </div>
+                                             <div className="ml-3">
+                                                <p className="whitespace-no-wrap">{cart?.name}</p>
+                                             </div>
+                                          </div>
+                                       </td>
+                                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                          <p className="whitespace-no-wrap">${cart?.price}</p>
+                                       </td>
+                                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                          <p className="whitespace-no-wrap">{cart?.brand}</p>
+                                       </td>
+                                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                          <p className="whitespace-no-wrap">1</p>
+                                       </td>
+                                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                          <button onClick={() => handleDelete(cart?._id)} className="rounded-full bg-green-200 hover:bg-green-900 hover:text-white px-3 py-1 text-xs font-semibold text-green-900">remove</button>
+                                       </td>
+                                    </tr>
+                                 ))
+                              }
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
 
-                           <div className="flex justify-between">
-                              <p className="text-lg">${product.price}</p>
-                              <p className="flex justify-end">
-                                 <Rating
-                                    initialRating={product.rating}
-                                    emptySymbol={<img src="https://dreyescat.github.io/react-rating/assets/images/star-grey.png" className="icon w-5 h-5" />}
-                                    // placeholderSymbol={<img src="https://dreyescat.github.io/react-rating/assets/images/star-red.png" className="icon w-full h-full" />}
-                                    fullSymbol={<img src="https://dreyescat.github.io/react-rating/assets/images/star-yellow.png" className="icon w-5 h-5" />}
-                                 />
-                              </p>
-                           </div>
-                           <div className="flex justify-center  gap-8">
-                              <button onClick={() => handleDelete(product._id)} className="badge text-xl py-4 hover:bg-pink-500 hover:text-white w-full badge-outline">Delete</button>
-                           </div>
+               {/* Checkout */}
+               <div className="flex flex-wrap px-4 justify-between">
+                  <div className="w-full px-4 mb-4 lg:w-1/2 ">
+                     <div className="flex flex-wrap items-center gap-4">
+                        <span className="text-gray-700 dark:text-gray-400">Apply Coupon</span>
+                        <input type="text"
+                           className="w-full px-8 py-4 font-normal placeholder-gray-400 border lg:flex-1 dark:border-gray-700 dark:placeholder-gray-500 dark:text-gray-400 dark:bg-gray-800"
+                           placeholder="x304k45" required />
+                        <button
+                           className="inline-block w-full px-8 py-4 font-bold text-center text-gray-100 bg-blue-500 rounded-md lg:w-32 hover:bg-blue-600">Apply</button>
+                     </div>
+                  </div>
+                  <div className="w-full px-4 mb-4 lg:w-1/2 ">
+                     <div className="p-6 border border-blue-100 dark:bg-gray-900 dark:border-gray-900 bg-gray-50 md:p-8">
+                        <h2 className="mb-8 text-3xl font-bold text-gray-700 dark:text-gray-400">Order Summary</h2>
+                        <div
+                           className="flex items-center justify-between pb-4 mb-4 border-b border-gray-300 dark:border-gray-700 ">
+                           <span className="text-gray-700 dark:text-gray-400">Subtotal</span>
+                           <span className="text-xl font-bold text-gray-700 dark:text-gray-400 ">${total}</span>
+                        </div>
+                        <div className="flex items-center justify-between pb-4 mb-4 ">
+                           <span className="text-gray-700 dark:text-gray-400 ">Shipping</span>
+                           <span className="text-xl font-bold text-gray-700 dark:text-gray-400 ">Free</span>
+                        </div>
+                        <div className="flex items-center justify-between pb-4 mb-4 ">
+                           <span className="text-gray-700 dark:text-gray-400">Order Total</span>
+                           <span className="text-xl font-bold text-gray-700 dark:text-gray-400">${total}</span>
+                        </div>
+                        <h2 className="text-lg text-gray-500 dark:text-gray-400">We offer:</h2>
+                        <div className="flex items-center gap-2 mb-4 ">
+                           <a href="#">
+                              <img src="https://i.postimg.cc/g22HQhX0/70599-visa-curved-icon.png" alt=""
+                                 className="object-cover h-16 w-26" />
+                           </a>
+                           <a href="#">
+                              <img src="https://i.postimg.cc/HW38JkkG/38602-mastercard-curved-icon.png" alt=""
+                                 className="object-cover h-16 w-26" />
+                           </a>
+                           <a href="#">
+                              <img src="https://i.postimg.cc/HL57j0V3/38605-paypal-straight-icon.png" alt=""
+                                 className="object-cover h-16 w-26" />
+                           </a>
+                        </div>
+                        <div className="flex items-center justify-between ">
+                           <button onClick={() => setIsOpen(true)}
+                              className="block w-full py-4 font-bold text-center text-gray-100 uppercase bg-blue-500 rounded-md hover:bg-blue-600">Checkout</button>
                         </div>
                      </div>
-                  </div>)
-            }
+                  </div>
+               </div>
+            </div>
          </div>
+         <CheckoutModal isOpen={isOpen} closeModal={closeModal} checkoutInfo={userCart} price={total} />
       </div>
    );
 };

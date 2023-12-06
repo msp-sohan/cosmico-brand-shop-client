@@ -7,15 +7,16 @@ import 'swiper/css/pagination';
 import { FreeMode, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "./testimonial.css";
+import useAxios from "../../hooks/useAxios";
 
 
 const Testimonials = () => {
+   const axios = useAxios()
    const [testimonials, setTestimonial] = useState([])
    useEffect(() => {
-      fetch('https://b8a10-brandshop-server-side-mspsohan.vercel.app/testimonial')
-         .then(res => res.json())
-         .then(data => setTestimonial(data))
-   }, [])
+      axios.get('/testimonial')
+         .then(data => setTestimonial(data?.data))
+   }, [axios])
 
    const breakpoints = {
       640: {
@@ -50,19 +51,19 @@ const Testimonials = () => {
                   modules={[FreeMode, Pagination]}
                   className="mySwiper">
                   {
-                     testimonials.map(testimonial => <SwiperSlide key={testimonial._id}>
+                     testimonials?.map(testimonial => <SwiperSlide key={testimonial?._id}>
                         <div className="shadow-2xl px-5 xl:px-10  rounded-lg h-full hover:bg-blue-50 py-14">
-                           <p className="h-full md:h-full lg:h-48 xl:h-full"><q> {testimonial.message}</q></p>
+                           <p className="h-full md:h-full lg:h-48 xl:h-full"><q> {testimonial?.message}</q></p>
                            <hr className="my-4" />
                            <div className="flex justify-center items-center gap-6 pt-6">
 
                               <div className="w-16 h-16">
-                                 <img src={testimonial.image} alt="" className="rounded-full" />
+                                 <img src={testimonial?.image} alt="" className="rounded-full" />
                               </div>
 
                               <div>
-                                 <h2 className="text-xl font-semibold">{testimonial.name}</h2>
-                                 <p className="text-[16px]">{testimonial.designation}</p>
+                                 <h2 className="text-xl font-semibold">{testimonial?.name}</h2>
+                                 <p className="text-[16px]">{testimonial?.designation}</p>
                               </div>
                            </div>
 

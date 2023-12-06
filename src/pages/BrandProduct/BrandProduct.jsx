@@ -1,14 +1,29 @@
 import Rating from "react-rating";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import Advertisement from "../../components/Advertisement/Advertisement";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import useAxios from "../../hooks/useAxios";
 
 
 const BrandProduct = () => {
+   const { user } = useContext(AuthContext)
+   const email = user?.email
    const allProduct = useLoaderData()
    const { brand } = useParams()
+   const axios = useAxios()
 
    const brandMatch = allProduct.filter(products => products.brand === brand)
-   // const { name, type, price, description, rating, image } = brandMatch;
+
+   const handleAddCart = async (cart) => {
+      const { brand, description, name, price, rating, type, image } = cart;
+      const cartData = { brand, description, name, price, rating, type, image, email }
+      const { data } = await axios.post('/mycart', cartData)
+      if (data.insertedId) {
+         Swal.fire('Add to Cart Seccessfully')
+      }
+   }
 
    if (brandMatch.length === 0) {
       return (
@@ -62,7 +77,7 @@ const BrandProduct = () => {
                               <Link to={`/products/${brand}/${brandProduct._id}`} className="w-full badge text-xl py-4 hover:bg-purple-500 hover:text-white badge-outline">
                                  <button className="">Details</button>
                               </Link>
-                              <Link to={`/update/${brandProduct._id}`} className="badge text-xl py-4 hover:bg-pink-500 hover:text-white w-full badge-outline"><button className="">Update</button></Link>
+                              <button onClick={() => handleAddCart(brandProduct)} className="badge text-xl py-4 hover:bg-pink-500 hover:text-white w-full badge-outline">Add Cart</button>
                            </div>
                         </div>
                      </div>

@@ -11,7 +11,6 @@ const SocialLogin = () => {
    const handleGoogleLogin = () => {
       googleLogin()
          .then(result => {
-            console.log('user', result.user);
             if (result.user) {
                navigate(location?.state ? location.state : "/");
                Swal.fire('Successfully Login With Google');
