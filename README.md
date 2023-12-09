@@ -39,6 +39,14 @@ Explore Cosmico: [Cosmico Brand Shop](https://cosmico-brand-shop.netlify.app)
 -  **Styling:** CSS, Tailwind Css.
 -  **Deployment:** Netlify (Frontend), Vercel (Backend).
 
+<!-- ## Technology Stack
+
+-  **Frontend:** React.js
+-  **Backend:** Node.js, Express.js
+-  **Database:** MongoDB
+-  **Styling:** CSS, Tailwind Css.
+-  **Deployment:** Netlify (Frontend), Vercel (Backend). -->
+
 <!--
 ### Website Name: [Cosmico](https://cosmico-brand-shop.netlify.app)
 
