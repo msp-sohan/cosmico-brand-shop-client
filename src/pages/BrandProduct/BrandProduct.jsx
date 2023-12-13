@@ -6,6 +6,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import useAxios from "../../hooks/useAxios";
 import useAllProducts from "../../hooks/useAllProducts";
+import toast from "react-hot-toast";
 
 
 const BrandProduct = () => {
@@ -20,14 +21,25 @@ const BrandProduct = () => {
    const brandMatch = allProduct?.result?.filter(products => products?.brand === brand)
 
    const handleAddCart = async (cart) => {
-      const { brand, description, name, price, rating, type, image } = cart;
-      const cartData = { brand, description, name, price, rating, type, image, email }
-      const { data } = await axios.post('/mycart', cartData)
-      if (data?.insertedId) {
-         Swal.fire('Add to Cart Seccessfully')
-         navigate('/dashboard/sopping-cart')
+      if (!user?.email) {
+         navigate("/login");
+         return;
       }
-   }
+
+      const { brand, description, name, price, rating, type, image } = cart;
+      const cartData = { brand, description, name, price, rating, type, image, email };
+
+      try {
+         const { data } = await axios.post('/mycart', cartData);
+
+         if (data?.insertedId) {
+            Swal.fire('Add to Cart Successfully');
+            navigate('/dashboard/shopping-cart');
+         }
+      } catch (error) {
+         toast.error(error);
+      }
+   };
 
    if (brandMatch?.length === 0) {
       return (

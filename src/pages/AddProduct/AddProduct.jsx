@@ -113,7 +113,7 @@ const AddProduct = () => {
                      </div>
                   </div>
 
-                  <div className="flex flex-col gap-4 mx-auto w-full items-start">
+                  <div className="flex flex-col gap-4 mx-auto w-[80vw] lg:w-full items-start">
                      <div className="text-xl font-['Raleway'] font-semibold leading-[30px] text-[rgba(27,_26,_26,_0.8)]">Long Description</div>
                      <div className="bg-white self-stretch flex flex-col justify-center h-24 items-start rounded">
                         <textarea className="w-full pl-3 h-full" name="longDescription" placeholder="Enter Long Description" id=""></textarea>

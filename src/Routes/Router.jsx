@@ -64,16 +64,16 @@ const router = createBrowserRouter([
    },
    {
       path: "/dashboard",
-      element: <DashboardLayout />,
+      element: <PrivetRouter><DashboardLayout /></PrivetRouter>,
       children: [
          {
             index: true,
-            element: <DashboardHome />
+            element: <PrivetRouter><DashboardHome /></PrivetRouter>
          },
          // Admin
          {
             path: "manage-product",
-            element: <ManageProducts />,
+            element: <PrivetRouter><ManageProducts /></PrivetRouter>,
          },
          {
             path: "update/:id",
@@ -85,12 +85,12 @@ const router = createBrowserRouter([
          },
          {
             path: "manage-user",
-            element: <ManageUsers />
+            element: <PrivetRouter><ManageUsers /></PrivetRouter>
          },
          // User
          {
-            path: "sopping-cart",
-            element: <ShoppingCart />
+            path: "shopping-cart",
+            element: <PrivetRouter><ShoppingCart /></PrivetRouter>
          }
       ]
    }

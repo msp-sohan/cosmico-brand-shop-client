@@ -31,7 +31,7 @@ const UserDashboard = () => {
                      </div>
                      <div
                         className="flex-1 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-lg flex flex-col items-center justify-center p-4 space-y-2 border border-gray-200 m-2">
-                        <i className="fas fa-exchange-alt text-white text-4xl">$44.77</i>
+                        <i className="fas fa-exchange-alt text-white text-4xl">$144.77</i>
                         <p className="text-white">This Month</p>
                      </div>
                      {/* <div
@@ -55,8 +55,8 @@ const UserDashboard = () => {
                      <tr className="border-b w-full">
                         <td className="px-4 py-2 text-left align-top w-1/2">
                            <div>
-                              <h2>Comercio</h2>
-                              <p>24/07/2023</p>
+                              <h2>L{"'"}Oréal Voluminous Mascara</h2>
+                              <p>11/12/2023</p>
                            </div>
                         </td>
                         <td className="px-4 py-2 text-right text-cyan-500 w-1/2">
@@ -66,8 +66,8 @@ const UserDashboard = () => {
                      <tr className="border-b w-full">
                         <td className="px-4 py-2 text-left align-top w-1/2">
                            <div>
-                              <h2>Comercio</h2>
-                              <p>24/06/2023</p>
+                              <h2>AVON Far Away Eau de Parfum</h2>
+                              <p>11/12/2023</p>
                            </div>
                         </td>
                         <td className="px-4 py-2 text-right text-cyan-500 w-1/2">
@@ -77,8 +77,8 @@ const UserDashboard = () => {
                      <tr className="border-b w-full">
                         <td className="px-4 py-2 text-left align-top w-1/2">
                            <div>
-                              <h2>Comercio</h2>
-                              <p>02/05/2023</p>
+                              <h2>CHANEL Le Rouge Lipstick</h2>
+                              <p>11/12/2023</p>
                            </div>
                         </td>
                         <td className="px-4 py-2 text-right text-cyan-500 w-1/2">
