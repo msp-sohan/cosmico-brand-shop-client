@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import useSingleProduct from "../../hooks/useSingleProduct";
-import axios from "axios";
 import { FaSpinner } from "react-icons/fa";
+import useAxios from "../../hooks/useAxios";
 
 const UpdateProduct = () => {
    const { id } = useParams()
+   const axios = useAxios()
    const { data: singleProduct, isLoading, refetch } = useSingleProduct(id)
 
    const handleUpdateProduct = async (e) => {
@@ -26,7 +27,7 @@ const UpdateProduct = () => {
       const products = { name, brand, type, price, rating, image }
 
 
-      const res = await axios.put(`https://cosmico-brand-shop-server.vercel.app/products/${id}`, products)
+      const res = await axios.put(`/products/${id}`, products)
       if (res?.data?.modifiedCount) {
          Swal.fire('Product Updated Successfully')
          refetch()

@@ -1,18 +1,12 @@
-import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import ShopSlick from "./ShopSlick";
 import "./ourshop.css";
+import useAllProducts from "../../hooks/useAllProducts";
 
 const OurShop = () => {
-   const [OurShop, setOurShop] = useState([])
-
-   useEffect(() => {
-      fetch('https://cosmico-brand-shop-server.vercel.app/products')
-         .then(res => res.json())
-         .then(data => setOurShop(data))
-   }, [])
+   const { data: ourShop } = useAllProducts()
 
    var settings = {
       dots: true,
@@ -58,7 +52,7 @@ const OurShop = () => {
             <div className="container mx-auto">
                <Slider {...settings}>
                   {
-                     OurShop.map(shopData => <ShopSlick key={shopData._id} shopData={shopData}></ShopSlick>)
+                     ourShop?.result?.map(shopData => <ShopSlick key={shopData?._id} shopData={shopData}></ShopSlick>)
                   }
                </Slider>
             </div>

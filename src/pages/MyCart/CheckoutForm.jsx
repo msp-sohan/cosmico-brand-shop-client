@@ -70,13 +70,10 @@ const CheckoutForm = ({ closeModal, price }) => {
 
          setCardError(confirmError.message);
       } else if (paymentIntent?.status === 'succeeded') {
-
-         toast.success(`Booking successful! ${paymentIntent?.id}`);
-         Swal.fire(`Booking successful! ${paymentIntent?.id}`);
-
+         toast.success(`Payment successful! ${paymentIntent?.id}`);
+         Swal.fire(`Payment successful! ${paymentIntent?.id}`);
          // Reset the form (assuming you have a ref for the form)
          event.target.reset();
-
          // Redirect to home page
          navigate('/');
       }

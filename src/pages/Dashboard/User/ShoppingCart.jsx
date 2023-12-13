@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../Provider/AuthProvider";
-import useCartItem from "../../hooks/useCartItem";
-import CheckoutModal from "./CheckoutModal";
-import useAxios from "../../hooks/useAxios";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import useCartItem from "../../../hooks/useCartItem";
+import CheckoutModal from "../../MyCart/CheckoutModal";
+import useAxios from "../../../hooks/useAxios";
 
-const MyCart = () => {
+const ShoppingCart = () => {
    const [isOpen, setIsOpen] = useState(false)
    const axios = useAxios()
    const { user } = useContext(AuthContext)
@@ -52,12 +52,12 @@ const MyCart = () => {
    }
 
    return (
-      <div className="py-16 bg-gray-100 font-poppins dark:bg-gray-700">
-         <div className="px-4 py-6 mx-auto container lg:py-4 md:px-6">
+      <div className="py-8 bg-gray-100 font-poppins dark:bg-gray-700">
+         <div className=" py-6 mx-auto container lg:py-4">
             <div>
-               <h2 className="mb-8 text-4xl font-bold dark:text-gray-400">Your Cart</h2>
-               <div className="mx-auto w-full px-4 py-8 sm:px-8">
-                  <div className="overflow-y-hidden rounded-lg border">
+               <h2 className="mb-4 pl-4 text-4xl font-bold dark:text-gray-400">Your Cart</h2>
+               <div className="mx-auto w-full py-8 sm:px-4">
+                  <div className="overflow-y-hidden rounded-lg border w-full">
                      <div className="overflow-x-auto">
                         <table className="w-full">
                            <thead>
@@ -166,4 +166,4 @@ const MyCart = () => {
    );
 };
 
-export default MyCart;
+export default ShoppingCart;

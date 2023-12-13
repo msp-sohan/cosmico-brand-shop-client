@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
 @tailwind base;
@@ -6,7 +6,30 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Playfair Display', 'Roboto', sans-serif, serif;
+	font-family: 'Playfair Display', 'Roboto', sans-serif, serif;
+}
+
+/* CSS */
+.tooltip {
+	position: relative;
+}
+
+.tooltip .popover {
+	position: absolute;
+	z-index: 10;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip:hover .popover {
+	visibility: visible;
+	opacity: 1;
 }
 
 /* :root {

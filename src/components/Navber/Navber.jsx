@@ -102,9 +102,9 @@ const Navber = () => {
                      user &&
                      <div className={`absolute bg-sky-200 py-2 z-40 rounded top-16 right-5 ${dropdown ? "" : "hidden"}`}>
                         <h2 className="text-lg px-2 flex items-center gap-4"><FaUserTie></FaUserTie>{user?.displayName ? user?.displayName : user?.email}</h2>
-                        <Link to="/dashboard" className="text-lg px-2 flex items-center gap-4 mt-2 hover:bg-[#e29070] hover:text-white"><MdDashboard />Dashboard</Link>
+                        <Link to="/dashboard" className="text-lg px-2 flex items-center gap-4 mt-2 py-1 rounded hover:bg-[#e29070] hover:text-white"><MdDashboard />Dashboard</Link>
                         <hr className="border-b-2 border-b-black my-2" />
-                        <button onClick={handleLogOut} className="text-lg px-2 flex items-center w-full gap-4 hover:bg-[#e29070] hover:text-white"><MdOutlineLogout></MdOutlineLogout>Log Out</button>
+                        <button onClick={handleLogOut} className="text-lg px-2 py-1 rounded flex items-center w-full gap-4 hover:bg-[#e29070] hover:text-white"><MdOutlineLogout></MdOutlineLogout>Log Out</button>
                      </div>
                   }
                </div>

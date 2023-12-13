@@ -1,19 +1,20 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../Provider/AuthProvider";
 import SocialLogin from "../Login/SocialLogin";
 import "./register.css";
-
+import { saveUser } from "../../api/auth";
+import toast from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
-   const { user, createUser, profileUpdate } = useContext(AuthContext)
+   const { createUser, profileUpdate } = useAuth()
    const [passwordError, setPasswordError] = useState("")
    const [showPass, setShowPass] = useState(false)
    const navigate = useNavigate()
 
-   const handleRegister = (e) => {
+   const handleRegister = async (e) => {
       e.preventDefault()
       const form = e.target
       const name = form.name.value
@@ -35,32 +36,17 @@ const Register = () => {
          setPasswordError("Password has no special characters.");
          return;
       }
-
-      createUser(email, password)
-         .then(result => {
-            if (result.user) {
-               Swal.fire('Account Create Successfully')
-               navigate("/")
-            }
-            if (!user) {
-               profileUpdate(name, photo)
-                  .then(() => {
-                     navigate("/");
-                  })
-                  .catch(error => {
-                     Swal.fire(error.message);
-                  })
-            } else {
-               Swal.fire('Account created successfully');
-               navigate("/");
-            }
-         })
-         .catch(error => {
-            if (error.message) {
-               Swal.fire("Email Already in Use.")
-            }
-
-         })
+      try {
+         const result = await createUser(email, password)
+         await profileUpdate(name, photo)
+         await saveUser(result?.user, name, photo)
+         navigate('/')
+         toast.success('Sign up Successfull')
+      } catch (error) {
+         if (error.message) {
+            Swal.fire("Email Already in Use.")
+         }
+      }
    }
    const handleShowPass = () => {
       setShowPass(!showPass)
