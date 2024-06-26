@@ -4,6 +4,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import useCartItem from "../../../hooks/useCartItem";
 import CheckoutModal from "../../MyCart/CheckoutModal";
 import useAxios from "../../../hooks/useAxios";
+import toast from "react-hot-toast";
 
 const ShoppingCart = () => {
    const [isOpen, setIsOpen] = useState(false)
@@ -15,6 +16,16 @@ const ShoppingCart = () => {
 
    function closeModal() {
       setIsOpen(false)
+   }
+
+   const handleDeleteCart = async () => {
+      try {
+         const { data } = await axios.delete(`/cartitem?email=${user?.email}`)
+         console.log("first", data)
+         refetch()
+      } catch (error) {
+         toast.error(error.message)
+      }
    }
 
    const handleDelete = (id) => {
@@ -161,7 +172,7 @@ const ShoppingCart = () => {
                </div>
             </div>
          </div>
-         <CheckoutModal isOpen={isOpen} closeModal={closeModal} checkoutInfo={userCart} price={total} />
+         <CheckoutModal isOpen={isOpen} closeModal={closeModal} checkoutInfo={userCart} price={total} handleDeleteCart={handleDeleteCart} />
       </div>
    );
 };

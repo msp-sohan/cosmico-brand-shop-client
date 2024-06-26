@@ -1,3 +1,4 @@
+import wallet from "../../../assets/pngegg.png"
 
 const UserDashboard = () => {
    return (
@@ -6,18 +7,17 @@ const UserDashboard = () => {
             <div className="bg-white rounded-full border-none p-3 mb-4 shadow-md">
                <div className="flex items-center">
                   <i className="px-3 fas fa-search ml-1"></i>
-                  <input type="text" placeholder="Buscar..." className="ml-3 focus:outline-none w-full" />
+                  <input type="text" placeholder="Search..." className="ml-3 focus:outline-none w-full" />
                </div>
             </div>
             <div className="lg:flex gap-4 items-stretch">
-
                <div className="bg-white md:p-2 p-6 rounded-lg border border-gray-200 mb-4 lg:mb-0 shadow-md lg:w-[35%]">
                   <div className="flex justify-center items-center space-x-5 h-full">
                      <div>
                         <p className="text-lg text-cyan-700">Last Payment</p>
                         <h2 className="text-4xl font-bold text-gray-600">50.36</h2>
                      </div>
-                     <img src="https://www.emprenderconactitud.com/img/Wallet.png" alt="wallet"
+                     <img src={wallet} alt="wallet"
                         className="h-24 md:h-20 w-38" />
                   </div>
                </div>

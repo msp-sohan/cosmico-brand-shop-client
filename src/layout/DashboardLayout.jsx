@@ -87,7 +87,7 @@ const DashboardLayout = () => {
                      {
                         !admin && <>
                            <NavItems label="Dashboard" address="/dashboard" icon={FaHome} />
-                           <NavItems label="Shoping Cart" address="/dashboard/sopping-cart" icon={MdAnalytics} />
+                           <NavItems label="Shoping Cart" address="/dashboard/shopping-cart" icon={MdAnalytics} />
                            {/* <NavItems label="Payment History" address="/dashboard/payment" icon={MdOutlineAddToPhotos} /> */}
                         </>
                      }

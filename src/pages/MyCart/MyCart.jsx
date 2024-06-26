@@ -4,17 +4,33 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import useCartItem from "../../hooks/useCartItem";
 import CheckoutModal from "./CheckoutModal";
 import useAxios from "../../hooks/useAxios";
+import toast from "react-hot-toast";
 
 const MyCart = () => {
    const [isOpen, setIsOpen] = useState(false)
    const axios = useAxios()
    const { user } = useContext(AuthContext)
    const { data: userCart, refetch } = useCartItem({ email: user?.email })
+   console.log(userCart)
+
+   const item = userCart?.map(item => { return item })
+   console.log(item)
 
    const total = userCart?.reduce((sum, cart) => sum + cart?.price, 0)
 
    function closeModal() {
       setIsOpen(false)
+   }
+   console.log(user?.email)
+
+   const handleDeleteCart = async () => {
+      try {
+         const { data } = await axios.delete(`/cartitem?email=${user?.email}`)
+         console.log("first", data)
+         refetch()
+      } catch (error) {
+         toast.error(error.message)
+      }
    }
 
    const handleDelete = (id) => {
@@ -95,10 +111,11 @@ const MyCart = () => {
                                           <p className="whitespace-no-wrap">{cart?.brand}</p>
                                        </td>
                                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                                          <p className="whitespace-no-wrap">1</p>
+                                          <p className="whitespace-no-wrap">2h</p>
                                        </td>
                                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                                          <button onClick={() => handleDelete(cart?._id)} className="rounded-full bg-green-200 hover:bg-green-900 hover:text-white px-3 py-1 text-xs font-semibold text-green-900">remove</button>
+                                          {/* <button onClick={() => handleDelete(cart?._id)} className="rounded-full bg-green-200 hover:bg-green-900 hover:text-white px-3 py-1 text-xs font-semibold text-green-900">remove</button> */}
+                                          <button onClick={() => handleDeleteCart()} className="rounded-full bg-green-200 hover:bg-green-900 hover:text-white px-3 py-1 text-xs font-semibold text-green-900">remove</button>
                                        </td>
                                     </tr>
                                  ))
@@ -161,7 +178,7 @@ const MyCart = () => {
                </div>
             </div>
          </div>
-         <CheckoutModal isOpen={isOpen} closeModal={closeModal} checkoutInfo={userCart} price={total} />
+         <CheckoutModal isOpen={isOpen} closeModal={closeModal} checkoutInfo={userCart} price={total} handleDeleteCart={handleDeleteCart} />
       </div>
    );
 };

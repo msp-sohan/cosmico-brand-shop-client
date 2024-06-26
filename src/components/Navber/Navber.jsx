@@ -19,7 +19,13 @@ const Navber = () => {
    const handleLogOut = () => {
       logOut()
          .then(() => {
-            Swal.fire("Successfully Logout")
+            Swal.fire({
+               position: "center",
+               icon: "success",
+               title: "Successfully Logout",
+               showConfirmButton: false,
+               timer: 1500
+            })
             navigate("/login")
          })
          .catch(error => {
@@ -41,22 +47,22 @@ const Navber = () => {
 
    const navlinks = <>
       <NavLink onClick={() => { setMenu(false) }} to="/" className={({ isActive, isPending }) =>
-         isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#f22ffc]  text-[#f22ffc] text-xl mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl mx-3 rounded-none "}>Home
+         isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#EC4899]  text-[#EC4899] text-xl mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl mx-3 rounded-none "}>Home
       </NavLink>
       {/* <NavLink onClick={() => { setMenu(false) }} to="/addproduct" className={({ isActive, isPending }) =>
          isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#f22ffc]  text-[#f22ffc] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl  mx-3 rounded-none"}>Add Product
       </NavLink> */}
       <NavLink onClick={() => { setMenu(false) }} to="/about" className={({ isActive, isPending }) =>
-         isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#f22ffc]  text-[#f22ffc] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl  mx-3 rounded-none "}>About Us
+         isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#EC4899]  text-[#EC4899] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl  mx-3 rounded-none "}>About Us
       </NavLink>
       <NavLink onClick={() => { setMenu(false) }} to="/contact" className={({ isActive, isPending }) =>
-         isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#f22ffc]  text-[#f22ffc] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl  mx-3 rounded-none "}>Contact Us
+         isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#EC4899]  text-[#EC4899] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl  mx-3 rounded-none "}>Contact Us
       </NavLink>
       {/* <NavLink to="/login" className={({ isActive, isPending }) =>
          isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#f22ffc]  text-[#f22ffc] text-xl  mx-3 rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl  mx-3 rounded-none "}>Login
       </NavLink> */}
       <NavLink onClick={() => { setMenu(false) }} to="/mycart" className={({ isActive, isPending }) =>
-         isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#f22ffc]  text-[#f22ffc] text-xl mx-3  rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl mx-3 rounded-none "}>My Cart
+         isPending ? "pending" : isActive ? "active hover:border-b-2 border-b-[#EC4899]  text-[#EC4899] text-xl mx-3  rounded-none font-semibold border-b-2" : "hover:border-b-2 border-b-[#f22ffc]  text-white text-xl mx-3 rounded-none "}>My Cart
       </NavLink>
 
    </>

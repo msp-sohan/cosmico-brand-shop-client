@@ -33,7 +33,12 @@ const BrandProduct = () => {
          const { data } = await axios.post('/mycart', cartData);
 
          if (data?.insertedId) {
-            Swal.fire('Add to Cart Successfully');
+            Swal.fire({
+               icon: 'success',
+               title: 'Add to Cart Successfully',
+               showConfirmButton: false,
+               timer: 1500
+            });
             navigate('/dashboard/shopping-cart');
          }
       } catch (error) {

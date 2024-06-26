@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import useAxios from '../../hooks/useAxios'
 
-const CheckoutForm = ({ closeModal, price }) => {
+const CheckoutForm = ({ closeModal, price, handleDeleteCart }) => {
    const stripe = useStripe()
    const elements = useElements()
    const axios = useAxios()
@@ -71,11 +71,18 @@ const CheckoutForm = ({ closeModal, price }) => {
          setCardError(confirmError.message);
       } else if (paymentIntent?.status === 'succeeded') {
          toast.success(`Payment successful! ${paymentIntent?.id}`);
-         Swal.fire(`Payment successful! ${paymentIntent?.id}`);
+         Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `Payment successful! ${paymentIntent?.id}`,
+            showConfirmButton: false,
+            timer: 1500
+         });
+         handleDeleteCart()
          // Reset the form (assuming you have a ref for the form)
          event.target.reset();
          // Redirect to home page
-         navigate('/');
+         // navigate('/');
       }
       setProcessing(false);
    };

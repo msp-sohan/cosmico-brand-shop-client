@@ -21,7 +21,7 @@ const SocialLogin = () => {
    }
 
    return (
-      <div>
+      <div className="">
          <button onClick={handleGoogleLogin} className="w-full bg-white py-2 rounded-[40px] text-md font-semibold mt-2 hover:bg-blue-500 hover:text-white">Sign in With Google</button>
       </div>
    );
